@@ -18,7 +18,9 @@
 
 			body{padding-top:56px}
 			p{font-size:15px}
-			.col-lg-5 p{padding-top:15px;padding-bottom:15px}
+			.col-lg-5{text-align:center}
+			.col-lg-5 p{padding-top:15px;padding-bottom:15px;line-height:3;margin-bottom:6px}
+			.col-lg-5 h1{border-bottom:1px solid rgba(0,0,0,0.1);padding-bottom:20px}
 			.spacebetweenbtns{padding-left:30px}
 			.container{padding-top:70px;margin-top:-70px}
 			.pressArticle{width:100%}
@@ -29,7 +31,7 @@
 			.navbar-brand{padding-top:0.15rem;padding-bottom:0.2rem;line-height:1.6}
 			.bg-dark{background-color:#3f729b !important}
 			.btnWeb{display:inline-block;color:#fff;background-color:#3f729b;border-color:#3f729b;padding:7px 13px 7px 13px;border-radius:5px;text-decoration:none !important;color:white !important;outline:none;box-shadow:none}
-			.bottomBarTitle{border-bottom:1px solid rgba(0,0,0,0.1);}
+			.bottomBarTitle{border-bottom:1px solid rgba(0,0,0,0.1)}
 			.bottomBarTitleMargin{margin-bottom:20px;padding-top:70px;margin-top:-70px}
 			.lrussoIcon{background:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAQAAADZc7J/AAAAAmJLR0QA/4ePzL8AAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkBB4FCim60cdVAAACtUlEQVRIx53V2W+VVRQF8N3hu4MVKVgKgnSi2DYCFUKMfwsq2KTGYElrQ5XWMRrwzQfloUETon3RxEQDJk4EEVqI4BTii75p4hAT41RuB+H250Mv1157e0tZT98531nr7L3OPvtURQVIxXAkcbhqNm4Gaj1mUs4hqZunQ87wiiXUGvC368gZWZGEGv0L6DDlSUm5tdVlFZLojlUlM9nYFZkb2z1jn50avGnORQP6nDPnPZt06XXr8gLbfO9r3dYb0iora6MhTTqc96v7KpOzdsrq8YcvtUVoc8JJWyJsMu6Kfhn3VIjCXr/ok+hx3DotPganbVFvVL/Eg352oDw5kbbNZyYdkJLWWqDDJ9qlJPb63WW7ZWUW0wcdc7suF7wurdlHJcd4RrtqL/vKLquNOuKWUvpBk+aMabBZg2Yf+j/OaFevRb1j8mYdkS1eGY+7Aq4ZiNDsA+XwqbsiPGQWihLSnpArLLmgyWbvWwpnbdVYTG7WYXXhxcLu0CfrHZVwymp75AujGUeroyaqimbkIxaMlir9a6G4fjpkjJgqGrWhrIHXMa7DGicLo2lPy8ybOFJwYd7EliUkxnVG2GemQH9O+r9zGJbD2+7QrLFsFBM6rdWmwXF5M54vKSYph7yh0d0uGpNeJDGhU42jLtut3qgXFtdiStYOn/vLfimZkkQmdEpL3O8337hXphj8osv0k0ckeo1pLJbzhE5rvGZQYo8fPVqpmeyQ0etPl7RGaHXCKV0RNjorZ1DWdnXLNZQffGG7dQY0qbPKegPutNW5ZRtKzJf2A7qtNSbvvP0edlreuzbo0LPM7gtSebVg35y5wtdb5TtR+a58Nb6LXEREVBVKeya+jX9W8jIkDi64ZNOelVnp25QYKkhMe2aJc78hiSlPVaLXLv2r6qpX4rZIxUuVnvd/ASFfR+T57LytAAAAAElFTkSuQmCC");background-repeat:no-repeat;padding-left:45px}
 
@@ -37,6 +39,14 @@
 				{
 				.collapse:not(.show){display:inline-block;position:absolute;right:30px}
 				.collapse:not(.show) ul,li,a{display:inline-block;padding-left:5px}
+				}
+
+			@media screen and (max-width:991px)
+				{
+				.col-lg-5{text-align:unset}
+				.col-lg-5 p{line-height:unset}
+				.col-lg-5 h1{line-height:unset;padding-bottom:unset}
+				.breaksDesc{display:none}
 				}
 
 		</style>
@@ -83,7 +93,7 @@
 				STRING_CONTACT = "Contacto";
 
 				STRING_CUSTOM_SOFTWARE = "Software a medida";
-				STRING_CUSTOM_SOFTWARE_DESC = "Apps para smartphones y tablets. Diseño Web. Sistemas de gestión. Hardware y software Arduino.";
+				STRING_CUSTOM_SOFTWARE_DESC = "Diseño Web. <br class='breaksDesc' />Sistemas de gestión. <br class='breaksDesc' />Hardware y software Arduino. <br class='breaksDesc' />Apps para smartphones y tablets.";
 
 				STRING_LATEST_PROJECTS = "Últimos desarrollos";
 
