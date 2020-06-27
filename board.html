@@ -30,8 +30,9 @@
 		<style>
 			html,body{margin:0;padding:0;background-color:gray;-webkit-user-select:none;-moz-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;touch-action:none}
 
-			.menu{background-color:#f1f1f1;width:100%;display:inline-block;box-shadow:0 2px 5px 0 rgba(0,0,0,.12),0 2px 10px 0 rgba(0,0,0,.12);}
-			.menu_item{float:left;display:block;font-family:Verdana;font-size:15px;padding-left:10px;padding-right:10px;padding-top:5px;padding-bottom:5px;line-height:2;cursor:pointer}
+			.menu{background-color:#f1f1f1;width:100%;display:inline-block;box-shadow:0 2px 5px 0 rgba(0,0,0,.12),0 2px 10px 0 rgba(0,0,0,.12);overflow-x:hidden;outline:none}
+			.menu_wrapper{width:400px}
+			.menu_item{float:left;display:block;font-family:Verdana;font-size:15px;padding-left:11px;padding-right:11px;padding-top:5px;padding-bottom:5px;line-height:2;cursor:pointer}
 			.menu_item_selected{background-color:#3a76b1;color:white}
 			.menu_link{text-decoration:none;color:black}
 
@@ -69,9 +70,11 @@
 			<div class="loading_icon"><div class="loading_spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
 		</div>
 		<div class="menu">
-			<div id="scrum" class="menu_item menu_item_selected">Scrum Board</div>
-			<a href="https://www.easydns.com/" target="_blank" class="menu_link"><div class="menu_item">EasyDNS</div></a>
-			<a href="https://www.iconfinder.com/" target="_blank" class="menu_link"><div class="menu_item">IconFinder</div></a>
+			<div class="menu_wrapper">
+				<div id="scrum" class="menu_item menu_item_selected">Scrum Board</div>
+				<a href="https://www.easydns.com/" target="_blank" class="menu_link"><div class="menu_item">EasyDNS</div></a>
+				<a href="https://www.iconfinder.com/" target="_blank" class="menu_link"><div class="menu_item">IconFinder</div></a>
+			</div>
 		</div>
 		<div class="scrum">
 			<div class="scrum_wrapper">
