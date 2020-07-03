@@ -7,6 +7,27 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
 	</head>
 	<body>
+		<script>
+			var userLanguage = window.navigator.userLanguage || window.navigator.language;
+
+			var STRING_FILENAME = "";
+			var STRING_FILENAME_EMPTY = "";
+			var STRING_NEW_QUESTION = "";
+
+			// CHECKING THE USER LANGUAGE
+			if (userLanguage.substring(0,2)=="es")
+				{
+				STRING_FILENAME = "Sin nombre.htm";
+				STRING_FILENAME_EMPTY = "Sin nombre";
+				STRING_NEW_QUESTION = "\u00BFPerder cualquier cambio no guardado?";
+				}
+				else
+				{
+				STRING_FILENAME = "Untitled.htm";
+				STRING_FILENAME_EMPTY = "Untitled";
+				STRING_NEW_QUESTION = "Lose any unsaved changes?";
+				}
+		</script>
 		<div class="tinyace_splash_container">
 			<div class="tinyace_pleasewait"><div class="tinyace_spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
 		</div>
