@@ -100,7 +100,11 @@
 		</div>
 		<script>
 			function scrum_NewTask(project,task){return{project:project,task:task}}
-			function scrum_addToColumn(list,to){for(var i=0;i<list.length;i++){document.getElementsByClassName(to)[0].innerHTML=document.getElementsByClassName(to)[0].innerHTML+"<div class='scrum_task'><div class='scrum_task_details'>"+list[i].task+"</div><div class='scrum_task_project'>"+list[i].project+"</div></div>";}}
+			function scrum_AddToColumn(list,to){for(var i=0;i<list.length;i++){document.getElementsByClassName(to)[0].innerHTML=document.getElementsByClassName(to)[0].innerHTML+"<div class='scrum_task'><div class='scrum_task_details'>"+list[i].task+"</div><div class='scrum_task_project'>"+list[i].project+"</div></div>";}}
+			function scrum_Pending(a,b){scrum_PendingColumn.push(scrum_NewTask(a,b))}
+			function scrum_Development(a,b){scrum_DevelopmentColumn.push(scrum_NewTask(a,b))}
+			function scrum_Testing(a,b){scrum_ReadyForTestColumn.push(scrum_NewTask(a,b))}
+			function scrum_Done(a,b){scrum_DoneColumn.push(scrum_NewTask(a,b))}
 
 			var scrum_PendingColumn = [];
 			var scrum_DevelopmentColumn = [];
@@ -132,10 +136,10 @@
 				{
 				loadingTasks();
 
-				scrum_addToColumn(scrum_PendingColumn,"scrum_column_pending");
-				scrum_addToColumn(scrum_DevelopmentColumn,"scrum_column_development");
-				scrum_addToColumn(scrum_ReadyForTestColumn,"scrum_column_test");
-				scrum_addToColumn(scrum_DoneColumn,"scrum_column_done");
+				scrum_AddToColumn(scrum_PendingColumn,"scrum_column_pending");
+				scrum_AddToColumn(scrum_DevelopmentColumn,"scrum_column_development");
+				scrum_AddToColumn(scrum_ReadyForTestColumn,"scrum_column_test");
+				scrum_AddToColumn(scrum_DoneColumn,"scrum_column_done");
 
 				document.getElementsByClassName("scrum_column_title")[0].innerHTML = STRING_PENDING + " (" + scrum_PendingColumn.length  + ")";
 				document.getElementsByClassName("scrum_column_title")[1].innerHTML = STRING_DEVELOPMENT + " (" + scrum_DevelopmentColumn.length  + ")";
@@ -151,28 +155,28 @@
 
 			function loadingTasks()
 				{
-				scrum_PendingColumn.push(scrum_NewTask("ARDUCLEANER","Regular motores con batería."));
-				scrum_PendingColumn.push(scrum_NewTask("ARDUCLEANER","Nuevo vídeo de demostración."));
-				scrum_PendingColumn.push(scrum_NewTask("TALKINGHEAD","Movimiento de ojos."));
-				scrum_PendingColumn.push(scrum_NewTask("TALKINGHEAD","Movimiento de boca."));
-				scrum_PendingColumn.push(scrum_NewTask("TALKINGHEAD","Función de texto a voz."));
-				scrum_PendingColumn.push(scrum_NewTask("NINTENDO","ScrollWrite sin márgenes."));
-				scrum_PendingColumn.push(scrum_NewTask("TINYPET","Mascota virtual en Phaser."));
-				scrum_PendingColumn.push(scrum_NewTask("FOLLOW MY VOICE","Publicar sin registro de llamadas."));
-				scrum_PendingColumn.push(scrum_NewTask("MOBILITY LAUNCHER","Publicar sin registro de llamadas."));
-				scrum_PendingColumn.push(scrum_NewTask("BLIND COMMUNICATOR","Publicar sin registro de llamadas."));
+				scrum_Pending("ARDUCLEANER","Regular motores con batería.");
+				scrum_Pending("ARDUCLEANER","Nuevo vídeo de demostración.");
+				scrum_Pending("TALKINGHEAD","Movimiento de ojos.");
+				scrum_Pending("TALKINGHEAD","Movimiento de boca.");
+				scrum_Pending("TALKINGHEAD","Función de texto a voz.");
+				scrum_Pending("NINTENDO","ScrollWrite sin márgenes.");
+				scrum_Pending("TINYPET","Mascota virtual en Phaser.");
+				scrum_Pending("FOLLOW MY VOICE","Publicar sin registro de llamadas.");
+				scrum_Pending("MOBILITY LAUNCHER","Publicar sin registro de llamadas.");
+				scrum_Pending("BLIND COMMUNICATOR","Publicar sin registro de llamadas.");
 
-				scrum_DevelopmentColumn.push(scrum_NewTask("POOL","Bolas con texturas que rotan."));
-				scrum_DevelopmentColumn.push(scrum_NewTask("TINYEPUB","Implementar Custom Alert."));
-				scrum_DevelopmentColumn.push(scrum_NewTask("NINTENDO","Implementar Custom Alert."));
-				scrum_DevelopmentColumn.push(scrum_NewTask("TINYACE","Implementar Custom Confirm."));
-				scrum_DevelopmentColumn.push(scrum_NewTask("EMULATRIX","Implementar PKZip."));
+				scrum_Development("POOL","Bolas con texturas que rotan.");
+				scrum_Development("TINYEPUB","Implementar Custom Alert.");
+				scrum_Development("NINTENDO","Implementar Custom Alert.");
+				scrum_Development("TINYACE","Implementar Custom Confirm.");
 
-				//scrum_ReadyForTestColumn.push(scrum_NewTask("POOL","Lógica de predicción de tiro."));
+				//scrum_Testing("POOL","Lógica de predicción de tiro.");
 
-				scrum_DoneColumn.push(scrum_NewTask("POOL","Lógica de predicción de tiro."));
-				scrum_DoneColumn.push(scrum_NewTask("EMULATRIX","Optimizar la emulación de Windows."));
-				scrum_DoneColumn.push(scrum_NewTask("TINYEPUB","Que vaya a la ruta CFI guardada."));
+				scrum_Done("POOL","Lógica de predicción de tiro.");
+				scrum_Done("EMULATRIX","Optimizar la emulación de Windows.");
+				scrum_Done("EMULATRIX","Implementar PKZip.");
+				scrum_Done("TINYEPUB","Que vaya a la ruta CFI guardada.");
 				}
 		</script>
 	</body>
