@@ -130,17 +130,17 @@
 
 			window.addEventListener("load", function()
 				{
-				document.getElementsByClassName("scrum_column_title")[0].innerHTML = STRING_PENDING;
-				document.getElementsByClassName("scrum_column_title")[1].innerHTML = STRING_DEVELOPMENT;
-				document.getElementsByClassName("scrum_column_title")[2].innerHTML = STRING_READYFORTEST;
-				document.getElementsByClassName("scrum_column_title")[3].innerHTML = STRING_DONE;
-
 				loadingTasks();
 
 				scrum_addToColumn(scrum_PendingColumn,"scrum_column_pending");
 				scrum_addToColumn(scrum_DevelopmentColumn,"scrum_column_development");
 				scrum_addToColumn(scrum_ReadyForTestColumn,"scrum_column_test");
 				scrum_addToColumn(scrum_DoneColumn,"scrum_column_done");
+
+				document.getElementsByClassName("scrum_column_title")[0].innerHTML = STRING_PENDING + " (" + scrum_PendingColumn.length  + ")";
+				document.getElementsByClassName("scrum_column_title")[1].innerHTML = STRING_DEVELOPMENT + " (" + scrum_DevelopmentColumn.length  + ")";
+				document.getElementsByClassName("scrum_column_title")[2].innerHTML = STRING_READYFORTEST + " (" + scrum_ReadyForTestColumn.length  + ")";
+				document.getElementsByClassName("scrum_column_title")[3].innerHTML = STRING_DONE + " (" + scrum_DoneColumn.length  + ")";
 
 				setTimeout(function()
 					{
