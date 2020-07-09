@@ -35,20 +35,29 @@
 
 			var STRING_FILENAME = "";
 			var STRING_FILENAME_EMPTY = "";
-			var STRING_NEW_QUESTION = "";
+			var STRING_LOSECHANGES_TITLE = "";
+			var STRING_LOSECHANGES_MESSAGE = "";
+			var STRING_LOSECHANGES_YES = "";
+			var STRING_LOSECHANGES_NO = "";
 
 			// CHECKING THE USER LANGUAGE
 			if (userLanguage.substring(0,2)=="es")
 				{
 				STRING_FILENAME = "Sin nombre.htm";
 				STRING_FILENAME_EMPTY = "Sin nombre";
-				STRING_NEW_QUESTION = "\u00BFPerder cualquier cambio no guardado?";
+				STRING_LOSECHANGES_TITLE = "MENSAJE";
+				STRING_LOSECHANGES_MESSAGE = "\u00BFPerder cualquier cambio<br/>que no haya sido guardado?";
+				STRING_LOSECHANGES_YES = "S&iacute;";
+				STRING_LOSECHANGES_NO = "No";
 				}
 				else
 				{
 				STRING_FILENAME = "Untitled.htm";
 				STRING_FILENAME_EMPTY = "Untitled";
-				STRING_NEW_QUESTION = "Lose any unsaved changes?";
+				STRING_LOSECHANGES_TITLE = "MESSAGE";
+				STRING_LOSECHANGES_MESSAGE = "Lose any unsaved changes?";
+				STRING_LOSECHANGES_YES = "Yes";
+				STRING_LOSECHANGES_NO = "No";
 				}
 		</script>
 		<div class="tinyace_splash_container">
