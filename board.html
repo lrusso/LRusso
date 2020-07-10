@@ -186,15 +186,15 @@
 					document.getElementsByClassName("loading")[0].style.display = "none";
 					}, 500);
 
-				setTimeout(function()
+				if (web_ToCheck.length>0)
 					{
-					if (web_ToCheck.length>0)
+					setTimeout(function()
 						{
 						document.getElementsByClassName("menu_item_checking")[0].style.display = "block";
 						document.getElementsByClassName("menu_item_checking")[0].innerHTML = "<div class='loading_spinner2_container'><div class='loading_spinner2_spinner'></div></div>";
 						web_CheckAll();
-						}
-					}, 750);
+						}, 750);
+					}
 				});
 
 			function loadingWebChecks()
