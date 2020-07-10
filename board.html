@@ -32,7 +32,7 @@
 
 			.menu{background-color:#f1f1f1;width:100%;display:inline-block;box-shadow:0 2px 5px 0 rgba(0,0,0,.12),0 2px 10px 0 rgba(0,0,0,.12);overflow-x:scroll;outline:none;scrollbar-width:none}
 			.menu::-webkit-scrollbar{display:none}
-			.menu_wrapper{float:left;width:630px}
+			.menu_wrapper{float:left;width:550px}
 			.menu_item{float:left;display:block;font-family:Verdana;font-size:15px;padding-left:20px;padding-right:20px;padding-top:5px;padding-bottom:5px;line-height:2;cursor:pointer}
 			.menu_item_selected{background-color:#3a76b1;color:white}
 			.menu_item_checking{float:left;display:none;font-family:Verdana;font-size:15px;padding-left:20px;padding-right:20px;padding-top:5px;padding-bottom:5px;line-height:2;cursor:default}
@@ -67,6 +67,9 @@
 			.loading_spinner div:nth-child(11){transform:rotate(300deg);animation-delay:-0.1s}
 			.loading_spinner div:nth-child(12){transform:rotate(330deg);animation-delay:0s}
 			@keyframes loading_spinner{0%{opacity:1}100%{opacity:0}}
+
+			.loading_spinner2:before{content:"";box-sizing:border-box;position:absolute;margin-top:5px;width:20px;height:20px;border-radius:50%;border:2px solid #ccc;border-top-color:#3f729b;animation:loading_spinner2 .6s linear infinite;}
+			@keyframes loading_spinner2{to{transform: rotate(360deg);}}
 		</style>
 	</head>
 	<body>
@@ -134,7 +137,6 @@
 			var STRING_DEVELOPMENT = "";
 			var STRING_READYFORTEST = "";
 			var STRING_DONE = "";
-			var STRING_CHECKING = "";
 			var STRING_ERROREXTENSION_TITLE = "";
 			var STRING_ERROREXTENSION_MESSAGE = "";
 			var STRING_ERROREXTENSION_ACCEPT = "";
@@ -146,7 +148,6 @@
 				STRING_DEVELOPMENT = "EN DESARROLLO";
 				STRING_READYFORTEST = "LISTAS PARA PRUEBAS";
 				STRING_DONE = "TERMINADAS";
-				STRING_CHECKING = "Verificando...";
 				STRING_ERROREXTENSION_TITLE = "MENSAJE";
 				STRING_ERROREXTENSION_MESSAGE = "Se ha detectado un cambio en:<br/>";
 				STRING_ERROREXTENSION_ACCEPT = "Aceptar";
@@ -157,7 +158,6 @@
 				STRING_DEVELOPMENT = "IN DEVELOPMENT";
 				STRING_READYFORTEST = "READY FOR TEST";
 				STRING_DONE = "DONE";
-				STRING_CHECKING = "Checking...";
 				STRING_ERROREXTENSION_TITLE = "MESSAGE";
 				STRING_ERROREXTENSION_MESSAGE = "A change was detected in:<br/>";
 				STRING_ERROREXTENSION_ACCEPT = "OK";
@@ -179,12 +179,6 @@
 
 				loadingWebChecks();
 
-				if (web_ToCheck.length>0)
-					{
-					document.getElementsByClassName("menu_item_checking")[0].style.display = "block";
-					document.getElementsByClassName("menu_item_checking")[0].innerHTML = STRING_CHECKING;
-					}
-
 				setTimeout(function()
 					{
 					document.getElementsByClassName("scrum")[0].style.display = "block";
@@ -193,7 +187,12 @@
 
 				setTimeout(function()
 					{
-					web_CheckAll();
+					if (web_ToCheck.length>0)
+						{
+						document.getElementsByClassName("menu_item_checking")[0].style.display = "block";
+						document.getElementsByClassName("menu_item_checking")[0].innerHTML = "<div class='loading_spinner2'></div>";
+						web_CheckAll();
+						}
 					}, 750);
 				});
 
