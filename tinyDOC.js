@@ -400,19 +400,6 @@ document.getElementById("tinydoc_textcode").addEventListener("keydown", function
 				// PRENTIVE DELAYED EVENT FOR GETTING FOCUS IN THE DOCUMENT
 				setTimeout(function(){document.getElementById("tinydoc_textcode").focus()},200);
 				}
-			else if (e.ctrlKey || e.metaKey)
-				{
-				switch (String.fromCharCode(e.which).toLowerCase())
-					{
-					case "s":
-					// CANCELING THE SAVING PAGE KEY EVENT
-					e.preventDefault();
-
-					// SAVING THE DOCUMENT
-					saveDocument();
-					break;
-					}
-				}
 			}
 		}
 		catch(err)
