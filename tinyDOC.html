@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="UTF-8">
-		<title>Scrum Board</title>
-		<meta property="og:title" content="Scrum Board"/>
-		<meta property="og:url" content="https://www.lrusso.com/board.html"/>
+		<title>TinyDOC Editor</title>
+		<meta property="og:title" content="TinyDOC Editor"/>
+		<meta property="og:url" content="https://www.lrusso.com/TinyDOC.html"/>
 		<meta property="og:description" content="IT Solutions"/>
 		<meta property="og:image" content="https://www.lrusso.com/indexShare.png"/>
 		<meta property="og:type" content="website"/>
-		<meta property="og:site_name" content="Scrum Board"/>
+		<meta property="og:site_name" content="TinyDOC Editor"/>
 		<meta name="keywords" content="leonardo, russo, programador, programmer, desarrollador, developer, administrador, administrator, java, php, web, arduino, app, android, smartphone, celular, tablet, mysql, sql"/>
 		<meta name="description" content="Android, Arduino and Web Design."/>
-		<meta name="theme-color" content="#3f729b"/>
+		<meta name="theme-color" content="#F2F2F2"/>
 		<meta name="mobile-web-app-capable" content="yes"/>
 		<meta name="apple-mobile-web-app-capable" content="yes"/>
 		<link rel="icon" sizes="16x16" type="image/png" href="img_FavIcon_16x16.png"/>
@@ -27,229 +27,63 @@
 			"logo": "https://www.lrusso.com/img_FavIcon_512x512.png"
 			}
 		</script>
-		<style>
-			html,body{margin:0;padding:0;background-color:gray;-webkit-user-select:none;-moz-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;touch-action:none}
-
-			.menu{background-color:#f1f1f1;width:100%;display:inline-block;box-shadow:0 2px 5px 0 rgba(0,0,0,.12),0 2px 10px 0 rgba(0,0,0,.12);overflow-x:scroll;outline:none;scrollbar-width:none}
-			.menu::-webkit-scrollbar{display:none}
-			.menu_wrapper{float:left;width:650px}
-			.menu_item{float:left;display:block;font-family:Verdana;font-size:15px;padding-left:20px;padding-right:20px;padding-top:5px;padding-bottom:5px;line-height:2;cursor:pointer}
-			.menu_item_selected{background-color:#3a76b1;color:white}
-			.menu_item_checking{float:left;display:none;font-family:Verdana;font-size:15px;padding-left:20px;padding-right:20px;padding-top:5px;padding-bottom:5px;line-height:2;cursor:default}
-			.menu_link{text-decoration:none;color:black;outline:none}
-
-			.scrum{display:none;width:100%;overflow-x:scroll;outline:none}
-			.scrum::-webkit-scrollbar{display:none}
-			.scrum_wrapper{float:left;width:1137px}
-			.scrum_column{display:block;float:left;background-color:#ebecf0;border-radius:3px;width:272px;margin:5px 0 10px 10px;color:#172b4d;font-weight:bold;font-size:14px;font-family:-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif}
-			.scrum_column_title{margin:7px;padding:5px}
-			.scrum_task{float:left;background-color:white;margin-left:8px;width:241px;border-radius:3px;box-shadow:0 1px 2px rgba(9,30,66,.25);font-weight:normal;line-height:2;padding-left:7px;padding-right:7px;margin-bottom:10px}
-			.scrum_task_details{float:left;width:243px;line-height:1.5;margin-top:5px}
-			.scrum_task_details a{text-decoration:none;color:#3a76b1;outline:none}
-			.scrum_task_project{float:left;color:gray;margin-bottom:3px}
-
-			.check_link{text-decoration:none;color:#3a76b1;outline:none}
-
-			.loading{position:fixed;left:0;right:0;top:0;bottom:0;background-color:black}
-			.loading_icon{position:fixed;width:64px;height:64px;left:0;right:0;top:0;bottom:0;margin:auto auto;border:0;z-index:9}
-			.loading_spinner{color:white;display:inline-block;position:relative;width:64px;height:64px}
-			.loading_spinner div{transform-origin:32px 32px;animation:loading_spinner 1.2s linear infinite}
-			.loading_spinner div:after{content:" ";display:block;position:absolute;top:3px;left:29px;width:5px;height:14px;border-radius:20%;background:white}
-			.loading_spinner div:nth-child(1){transform:rotate(0deg);animation-delay:-1.1s}
-			.loading_spinner div:nth-child(2){transform:rotate(30deg);animation-delay:-1s}
-			.loading_spinner div:nth-child(3){transform:rotate(60deg);animation-delay:-0.9s}
-			.loading_spinner div:nth-child(4){transform:rotate(90deg);animation-delay:-0.8s}
-			.loading_spinner div:nth-child(5){transform:rotate(120deg);animation-delay:-0.7s}
-			.loading_spinner div:nth-child(6){transform:rotate(150deg);animation-delay:-0.6s}
-			.loading_spinner div:nth-child(7){transform:rotate(180deg);animation-delay:-0.5s}
-			.loading_spinner div:nth-child(8){transform:rotate(210deg);animation-delay:-0.4s}
-			.loading_spinner div:nth-child(9){transform:rotate(240deg);animation-delay:-0.3s}
-			.loading_spinner div:nth-child(10){transform:rotate(270deg);animation-delay:-0.2s}
-			.loading_spinner div:nth-child(11){transform:rotate(300deg);animation-delay:-0.1s}
-			.loading_spinner div:nth-child(12){transform:rotate(330deg);animation-delay:0s}
-			@keyframes loading_spinner{0%{opacity:1}100%{opacity:0}}
-
-			.loading_spinner2_container{position:relative}
-			.loading_spinner2_spinner:before{content:"";box-sizing:border-box;position:absolute;margin-top:5px;width:20px;height:20px;border-radius:50%;border:2px solid #ccc;border-top-color:#3f729b;animation:loading_spinner2_spinner .6s linear infinite;}
-			@keyframes loading_spinner2_spinner{to{transform: rotate(360deg);}}
-		</style>
+		<link rel="stylesheet" href="TinyDOC.css" type="text/css">
 	</head>
 	<body>
-		<div class="loading">
-			<div class="loading_icon"><div class="loading_spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
-		</div>
-		<div class="menu">
-			<div class="menu_wrapper">
-				<div id="scrum" class="menu_item menu_item_selected">Scrum Board</div>
-				<a href="https://www.easydns.com/" target="_blank" class="menu_link"><div class="menu_item">EasyDNS</div></a>
-				<a href="https://www.iconfinder.com/" target="_blank" class="menu_link"><div class="menu_item">IconFinder</div></a>
-				<a href="https://www.lrusso.com/tinyACE.html" target="_blank" class="menu_link"><div class="menu_item">TinyACE</div></a>
-				<a href="https://www.lrusso.com/tinyDOC.html" target="_blank" class="menu_link"><div class="menu_item">TinyDOC</div></a>
-				<div class="menu_item_checking"></div>
+		<div class="tinydoc_menubar">
+			<div class="tinydoc_holder">
+				<div class="tinydoc_button_print_enabled" id="buttonPrint"></div>
+			</div>
+			<div class="tinydoc_separator"></div>
+			<div class="tinydoc_holder">
+				<div class="tinydoc_button_undo_enabled" id="buttonUndo"></div>
+			</div>
+			<div class="tinydoc_holder">
+				<div class="tinydoc_button_redo_enabled" id="buttonRedo"></div>
+			</div>
+			<div class="tinydoc_separator"></div>
+			<div class="tinydoc_holder">
+				<div class="tinydoc_button_bold_enabled" id="buttonBold"></div>
+			</div>
+			<div class="tinydoc_holder">
+				<div class="tinydoc_button_italic_enabled" id="buttonItalic"></div>
+			</div>
+			<div class="tinydoc_holder">
+				<div class="tinydoc_button_underline_enabled" id="buttonUnderline"></div>
+			</div>
+			<div class="tinydoc_holder">
+				<div class="tinydoc_button_strikethrough_enabled" id="buttonStrikethrough"></div>
+			</div>
+			<div class="tinydoc_separator"></div>
+			<div class="tinydoc_holder">
+				<div class="tinydoc_button_dotted_enabled" id="buttonDotted"></div>
+			</div>
+			<div class="tinydoc_holder">
+				<div class="tinydoc_button_numbered_enabled" id="buttonNumbered"></div>
+			</div>
+			<div class="tinydoc_holder">
+				<div class="tinydoc_button_highlight_enabled" id="buttonHighlight"></div>
+			</div>
+			<div class="tinydoc_holder">
+				<div class="tinydoc_button_link_enabled" id="buttonLink"></div>
+			</div>
+			<div class="tinydoc_separator"></div>
+			<div class="tinydoc_holder">
+				<div class="tinydoc_button_clear_enabled" id="buttonClear"></div>
+			</div>
+			<div class="tinydoc_separator"></div>
+			<div class="tinydoc_holder">
+				<div id="tinydoc_urlviewer"></div>
 			</div>
 		</div>
-		<div class="scrum">
-			<div class="scrum_wrapper">
-				<div class="scrum_column">
-					<div class="scrum_column_title"></div>
-					<div class="scrum_column_pending"></div>
-				</div>
-				<div class="scrum_column">
-					<div class="scrum_column_title"></div>
-					<div class="scrum_column_development"></div>
-				</div>
-				<div class="scrum_column">
-					<div class="scrum_column_title"></div>
-					<div class="scrum_column_test"></div>
-				</div>
-				<div class="scrum_column">
-					<div class="scrum_column_title"></div>
-					<div class="scrum_column_done"></div>
-				</div>
-			</div>
-		</div>
-		<script>
-			function alertCustom(title,message,accept){try{var alertContainer = document.createElement("div");alertContainer.style.position = "fixed";alertContainer.style.top = 0;alertContainer.style.bottom = 0;alertContainer.style.left = 0;alertContainer.style.right = 0;alertContainer.style.zIndex = 9999;alertContainer.style.backgroundColor = "rgba(0,0,0,0.5)";var alertForm = document.createElement("div");alertForm.style.position = "relative";alertForm.style.top = "50%";alertForm.style.left = 0;alertForm.style.right = 0;alertForm.style.marginLeft = "auto";alertForm.style.marginRight = "auto";alertForm.style.transform = "translateY(-50%)";alertForm.style.width = "300px";alertForm.style.backgroundColor = "#f2f2f2";alertForm.style.textAlign = "center";var alertTitle = document.createElement("div");alertTitle.style.textAlign = "left";alertTitle.style.paddingLeft = "10px";alertTitle.style.backgroundColor = "#3a76b1";alertTitle.style.fontFamily = "Arial";alertTitle.style.fontSize = "16px";alertTitle.style.fontWeight = "bold";alertTitle.style.color = "white";alertTitle.style.lineHeight = 2.5;alertTitle.innerHTML = title;var alertMessage = document.createElement("div");alertMessage.style.padding = "20px";alertMessage.style.fontFamily = "Arial";alertMessage.style.fontSize = "16px";alertMessage.style.color = "black";alertMessage.style.textAlign = "center";alertMessage.style.lineHeight = 2;alertMessage.innerHTML = message;var alertButton = document.createElement("div");alertButton.style.padding = "10px";alertButton.style.backgroundColor = "#d2d2d2";alertButton.style.border = "1px solid #b2b2b2";alertButton.style.fontFamily = "Arial";alertButton.style.fontSize = "16px";alertButton.style.color = "black";alertButton.style.textAlign = "center";alertButton.style.lineHeight = 1.5;alertButton.style.display = "inline-block";alertButton.style.marginBottom = "10px";alertButton.style.paddingLeft = "40px";alertButton.style.paddingRight = "40px";alertButton.style.cursor = "pointer";alertButton.addEventListener("click",function(event){document.body.removeChild(alertContainer);});alertButton.innerHTML = accept;alertForm.appendChild(alertTitle);alertForm.appendChild(alertMessage);alertForm.appendChild(alertButton);alertContainer.appendChild(alertForm);document.body.appendChild(alertContainer);}catch(err){}}
 
-			function scrum_NewTask(project,task){return{project:project,task:task}}
-			function scrum_DataToColumns(){scrum_DataToColumn1()}
-			function scrum_DataToColumn1(){var scrum_from=scrum_PendingColumn;var scrum_to="scrum_column_pending";var scrum_counter=-1;function loop(){if(scrum_counter<scrum_from.length-1){scrum_counter=scrum_counter+1;try{document.getElementsByClassName(scrum_to)[0].innerHTML = document.getElementsByClassName(scrum_to)[0].innerHTML+"<div class='scrum_task'><div class='scrum_task_details'>"+scrum_from[scrum_counter].task+"</div><div class='scrum_task_project'>"+scrum_from[scrum_counter].project+"</div></div>";}catch(err){}setTimeout(loop,20);}else{scrum_DataToColumn2();}}loop();}
-			function scrum_DataToColumn2(){var scrum_from=scrum_DevelopmentColumn;var scrum_to="scrum_column_development";var scrum_counter=-1;function loop(){if(scrum_counter<scrum_from.length-1){scrum_counter=scrum_counter+1;try{document.getElementsByClassName(scrum_to)[0].innerHTML = document.getElementsByClassName(scrum_to)[0].innerHTML+"<div class='scrum_task'><div class='scrum_task_details'>"+scrum_from[scrum_counter].task+"</div><div class='scrum_task_project'>"+scrum_from[scrum_counter].project+"</div></div>";}catch(err){}setTimeout(loop,20);}else{scrum_DataToColumn3();}}loop();}
-			function scrum_DataToColumn3(){var scrum_from=scrum_ReadyForTestColumn;var scrum_to="scrum_column_test";var scrum_counter=-1;function loop(){if(scrum_counter<scrum_from.length-1){scrum_counter=scrum_counter+1;try{document.getElementsByClassName(scrum_to)[0].innerHTML = document.getElementsByClassName(scrum_to)[0].innerHTML+"<div class='scrum_task'><div class='scrum_task_details'>"+scrum_from[scrum_counter].task+"</div><div class='scrum_task_project'>"+scrum_from[scrum_counter].project+"</div></div>";}catch(err){}setTimeout(loop,20);}else{scrum_DataToColumn4();}}loop();}
-			function scrum_DataToColumn4(){var scrum_from=scrum_DoneColumn;var scrum_to="scrum_column_done";var scrum_counter=-1;function loop(){if(scrum_counter<scrum_from.length-1){scrum_counter=scrum_counter+1;try{document.getElementsByClassName(scrum_to)[0].innerHTML = document.getElementsByClassName(scrum_to)[0].innerHTML+"<div class='scrum_task'><div class='scrum_task_details'>"+scrum_from[scrum_counter].task+"</div><div class='scrum_task_project'>"+scrum_from[scrum_counter].project+"</div></div>";}catch(err){}setTimeout(loop,20);}else{scrum_ShowBoard();}}loop();}
-			function scrum_ShowBoard(){setTimeout(function(){document.getElementsByClassName("scrum")[0].style.display = "block";document.getElementsByClassName("loading")[0].style.display = "none";},500);if(web_ToCheck.length>0){setTimeout(function(){document.getElementsByClassName("menu_item_checking")[0].style.display = "block";document.getElementsByClassName("menu_item_checking")[0].innerHTML = "<div class='loading_spinner2_container'><div class='loading_spinner2_spinner'></div></div>";web_CheckAll();},750);}}
-			function scrum_AddToPending(a,b){scrum_PendingColumn.push(scrum_NewTask(a,b))}
-			function scrum_AddToDevelopment(a,b){scrum_DevelopmentColumn.push(scrum_NewTask(a,b))}
-			function scrum_AddToTesting(a,b){scrum_ReadyForTestColumn.push(scrum_NewTask(a,b))}
-			function scrum_AddToDone(a,b){scrum_DoneColumn.push(scrum_NewTask(a,b))}
+		<div class="tinydoc_splash"></div><div class="tinydoc_splash_container"></div>
 
-			function web_NewCheck(url,find,mustBeFound){return{url:url,find:find,mustBeFound:mustBeFound}}
-			function web_Check(a,b,c){web_ToCheck.push(web_NewCheck(a,b,c))}
-			function web_CheckAll(){try{if(web_ToCheck[0]){web_Check_1()}if(web_ToCheck[1]){web_Check_2()}if(web_ToCheck[2]){web_Check_3()}if(web_ToCheck[3]){web_Check_4()}if(web_ToCheck[4]){web_Check_5()}}catch(err){}}
+		<div class="tinydoc_error"></div>
+		<div class="tinydoc_saved"></div>
 
-			function web_Check_1(){try{var url_1=web_ToCheck[0].url;var find_1=web_ToCheck[0].find.toLowerCase();var found_1=web_ToCheck[0].mustBeFound;var timestamp_1=new Date().getTime();var checking_1=new XMLHttpRequest();checking_1.open("GET",web_Proxy+url_1+"?timestamp="+timestamp_1,true);checking_1.onload=function(oEvent){var showAlert_1=false;if(this.status===404){showAlert_1=true;}else{var response=checking_1.response.toLowerCase();if(response.length>0){if((response.indexOf(find_1)>-1&&found_1==true)||(response.indexOf(find_1)==-1&&found_1==false)){showAlert_1=true;}}else{showAlert_1=true;}}web_Counter=web_Counter+1;if(web_Counter==web_ToCheck.length){document.getElementsByClassName("menu_item_checking")[0].style.display="none";}if(showAlert_1==true){alertCustom(STRING_ERROREXTENSION_TITLE,STRING_ERROREXTENSION_MESSAGE+"<a href='"+url_1+"' target='_blank' class='check_link'>"+url_1+"</a>",STRING_ERROREXTENSION_ACCEPT);}};checking_1.onerror=function(){setTimeout(function(){web_Check_1()},1000)};checking_1.ontimeout=function(){web_Check_1()};checking_1.timeout=15000;checking_1.send();}catch(err){}}
-			function web_Check_2(){try{var url_2=web_ToCheck[1].url;var find_2=web_ToCheck[1].find.toLowerCase();var found_2=web_ToCheck[1].mustBeFound;var timestamp_2=new Date().getTime();var checking_2=new XMLHttpRequest();checking_2.open("GET",web_Proxy+url_2+"?timestamp="+timestamp_2,true);checking_2.onload=function(oEvent){var showAlert_2=false;if(this.status===404){showAlert_2=true;}else{var response=checking_2.response.toLowerCase();if(response.length>0){if((response.indexOf(find_2)>-1&&found_2==true)||(response.indexOf(find_2)==-1&&found_2==false)){showAlert_2=true;}}else{showAlert_2=true;}}web_Counter=web_Counter+1;if(web_Counter==web_ToCheck.length){document.getElementsByClassName("menu_item_checking")[0].style.display="none";}if(showAlert_2==true){alertCustom(STRING_ERROREXTENSION_TITLE,STRING_ERROREXTENSION_MESSAGE+"<a href='"+url_2+"' target='_blank' class='check_link'>"+url_2+"</a>",STRING_ERROREXTENSION_ACCEPT);}};checking_2.onerror=function(){setTimeout(function(){web_Check_2()},1000)};checking_2.ontimeout=function(){web_Check_2()};checking_2.timeout=15000;checking_2.send();}catch(err){}}
-			function web_Check_3(){try{var url_3=web_ToCheck[2].url;var find_3=web_ToCheck[2].find.toLowerCase();var found_3=web_ToCheck[2].mustBeFound;var timestamp_3=new Date().getTime();var checking_3=new XMLHttpRequest();checking_3.open("GET",web_Proxy+url_3+"?timestamp="+timestamp_3,true);checking_3.onload=function(oEvent){var showAlert_3=false;if(this.status===404){showAlert_3=true;}else{var response=checking_3.response.toLowerCase();if(response.length>0){if((response.indexOf(find_3)>-1&&found_3==true)||(response.indexOf(find_3)==-1&&found_3==false)){showAlert_3=true;}}else{showAlert_3=true;}}web_Counter=web_Counter+1;if(web_Counter==web_ToCheck.length){document.getElementsByClassName("menu_item_checking")[0].style.display="none";}if(showAlert_3==true){alertCustom(STRING_ERROREXTENSION_TITLE,STRING_ERROREXTENSION_MESSAGE+"<a href='"+url_3+"' target='_blank' class='check_link'>"+url_3+"</a>",STRING_ERROREXTENSION_ACCEPT);}};checking_3.onerror=function(){setTimeout(function(){web_Check_3()},1000)};checking_3.ontimeout=function(){web_Check_3()};checking_3.timeout=15000;checking_3.send();}catch(err){}}
-			function web_Check_4(){try{var url_4=web_ToCheck[3].url;var find_4=web_ToCheck[3].find.toLowerCase();var found_4=web_ToCheck[3].mustBeFound;var timestamp_4=new Date().getTime();var checking_4=new XMLHttpRequest();checking_4.open("GET",web_Proxy+url_4+"?timestamp="+timestamp_4,true);checking_4.onload=function(oEvent){var showAlert_4=false;if(this.status===404){showAlert_4=true;}else{var response=checking_4.response.toLowerCase();if(response.length>0){if((response.indexOf(find_4)>-1&&found_4==true)||(response.indexOf(find_4)==-1&&found_4==false)){showAlert_4=true;}}else{showAlert_4=true;}}web_Counter=web_Counter+1;if(web_Counter==web_ToCheck.length){document.getElementsByClassName("menu_item_checking")[0].style.display="none";}if(showAlert_4==true){alertCustom(STRING_ERROREXTENSION_TITLE,STRING_ERROREXTENSION_MESSAGE+"<a href='"+url_4+"' target='_blank' class='check_link'>"+url_4+"</a>",STRING_ERROREXTENSION_ACCEPT);}};checking_4.onerror=function(){setTimeout(function(){web_Check_4()},1000)};checking_4.ontimeout=function(){web_Check_4()};checking_4.timeout=15000;checking_4.send();}catch(err){}}
-			function web_Check_5(){try{var url_5=web_ToCheck[4].url;var find_5=web_ToCheck[4].find.toLowerCase();var found_5=web_ToCheck[4].mustBeFound;var timestamp_5=new Date().getTime();var checking_5=new XMLHttpRequest();checking_5.open("GET",web_Proxy+url_5+"?timestamp="+timestamp_5,true);checking_5.onload=function(oEvent){var showAlert_5=false;if(this.status===404){showAlert_5=true;}else{var response=checking_5.response.toLowerCase();if(response.length>0){if((response.indexOf(find_5)>-1&&found_5==true)||(response.indexOf(find_5)==-1&&found_5==false)){showAlert_5=true;}}else{showAlert_5=true;}}web_Counter=web_Counter+1;if(web_Counter==web_ToCheck.length){document.getElementsByClassName("menu_item_checking")[0].style.display="none";}if(showAlert_5==true){alertCustom(STRING_ERROREXTENSION_TITLE,STRING_ERROREXTENSION_MESSAGE+"<a href='"+url_5+"' target='_blank' class='check_link'>"+url_5+"</a>",STRING_ERROREXTENSION_ACCEPT);}};checking_5.onerror=function(){setTimeout(function(){web_Check_5()},1000)};checking_5.ontimeout=function(){web_Check_5()};checking_5.timeout=15000;checking_5.send();}catch(err){}}
+		<div id="tinydoc_textcode" contenteditable="true"></div>
 
-			function showBoard(){scrum_DataToColumns()}
-
-			var scrum_PendingColumn = [];
-			var scrum_DevelopmentColumn = [];
-			var scrum_ReadyForTestColumn = [];
-			var scrum_DoneColumn = [];
-
-			var web_Proxy = "https://lrussocorsanywhere.herokuapp.com/";
-			var web_Counter = 0;
-			var web_ToCheck = [];
-
-			var STRING_PENDING = "";
-			var STRING_DEVELOPMENT = "";
-			var STRING_READYFORTEST = "";
-			var STRING_DONE = "";
-			var STRING_ERROREXTENSION_TITLE = "";
-			var STRING_ERROREXTENSION_MESSAGE = "";
-			var STRING_ERROREXTENSION_ACCEPT = "";
-
-			var userLanguage = window.navigator.userLanguage || window.navigator.language;
-			if (userLanguage.substring(0,2)=="es")
-				{
-				STRING_PENDING = "TAREAS PENDIENTES";
-				STRING_DEVELOPMENT = "EN DESARROLLO";
-				STRING_READYFORTEST = "LISTAS PARA PRUEBAS";
-				STRING_DONE = "TERMINADAS";
-				STRING_ERROREXTENSION_TITLE = "MENSAJE";
-				STRING_ERROREXTENSION_MESSAGE = "Se ha detectado un cambio en:<br/>";
-				STRING_ERROREXTENSION_ACCEPT = "Aceptar";
-				}
-				else
-				{
-				STRING_PENDING = "PENDING TASKS";
-				STRING_DEVELOPMENT = "IN DEVELOPMENT";
-				STRING_READYFORTEST = "READY FOR TEST";
-				STRING_DONE = "DONE";
-				STRING_ERROREXTENSION_TITLE = "MESSAGE";
-				STRING_ERROREXTENSION_MESSAGE = "A change was detected in:<br/>";
-				STRING_ERROREXTENSION_ACCEPT = "OK";
-				}
-
-			window.addEventListener("load", function()
-				{
-				loadingTasks();
-				loadingWebChecks();
-
-				document.getElementsByClassName("scrum_column_title")[0].innerHTML = STRING_PENDING + " (" + scrum_PendingColumn.length  + ")";
-				document.getElementsByClassName("scrum_column_title")[1].innerHTML = STRING_DEVELOPMENT + " (" + scrum_DevelopmentColumn.length  + ")";
-				document.getElementsByClassName("scrum_column_title")[2].innerHTML = STRING_READYFORTEST + " (" + scrum_ReadyForTestColumn.length  + ")";
-				document.getElementsByClassName("scrum_column_title")[3].innerHTML = STRING_DONE + " (" + scrum_DoneColumn.length  + ")";
-
-				showBoard();
-				});
-
-			function loadingWebChecks()
-				{
-				web_Check("https://nic.ar/ar","fecha a definir",false);
-				web_Check("https://raw.githubusercontent.com/ajaxorg/ace-builds/master/src-min-noconflict/ace.js","version=\"1.4.12\"",false);
-				}
-
-			function loadingTasks()
-				{
-				scrum_AddToPending("ARDUCLEANER","Regular motores con batería.");
-				scrum_AddToPending("ARDUCLEANER","Nuevo vídeo de demostración.");
-				scrum_AddToPending("TALKINGHEAD","Movimiento de ojos.");
-				scrum_AddToPending("TALKINGHEAD","Movimiento de boca.");
-				scrum_AddToPending("TALKINGHEAD","Función de texto a voz.");
-				scrum_AddToPending("NINTENDO","ScrollWrite sin márgenes.");
-				scrum_AddToPending("TINYPET","Mascota virtual en Phaser.");
-				scrum_AddToPending("POOL","Bolas con texturas que rotan.");
-				scrum_AddToPending("ARDUINO SIMULATOR","Serial.read() con ASCII extendido.");
-				scrum_AddToPending("ARDUINO SIMULATOR","Probar atoi en placa e implementar.");
-				scrum_AddToPending("ARDUINO SIMULATOR","Implementar la clase String.");
-				scrum_AddToPending("ARDUINO SIMULATOR","Implementar el Serial.readString().");
-				scrum_AddToPending("ARDUINO SIMULATOR","Implementar print conversor. <a href='https://www.arduino.cc/reference/en/language/functions/communication/serial/print' target='_blank'>Leer</a>");
-				scrum_AddToPending("WEBTOAPP","iOS - Implementar fullscreen. <a href='https://stackoverflow.com/questions/47244002/make-wkwebview-real-fullscreen-on-iphone-x-remove-safe-area-from-wkwebview' target='_blank'>Leer</a>");
-				scrum_AddToPending("WEBTOAPP","iOS - Habilitar descarga binaria.");
-				scrum_AddToPending("FOLLOW MY VOICE","Publicar sin registro de llamadas.");
-				scrum_AddToPending("MOBILITY LAUNCHER","Publicar sin registro de llamadas.");
-				scrum_AddToPending("BLIND COMMUNICATOR","Publicar sin registro de llamadas.");
-
-				scrum_AddToDevelopment("WEBTOAPP","Mac - Habilitar descarga binaria.");
-
-				//scrum_AddToTesting("POOL","Lógica de predicción de tiro.");
-
-				scrum_AddToDone("POOL","Lógica de predicción de tiro.");
-				scrum_AddToDone("EMULATRIX","Optimizar la emulación de Windows.");
-				scrum_AddToDone("EMULATRIX","Implementar PKZip.");
-				scrum_AddToDone("TINYEPUB","Que vaya a la ruta CFI guardada.");
-				scrum_AddToDone("TINYEPUB","Implementar Custom Alert.");
-				scrum_AddToDone("NINTENDO","Implementar Custom Alert.");
-				scrum_AddToDone("TINYACE","Implementar Custom Confirm.");
-				scrum_AddToDone("SPIDER","Mac - Ventana recuerda la posición.");
-				scrum_AddToDone("SPIDER","Mac - Ventana recuerda el tamaño.");
-				scrum_AddToDone("WEBTOAPP","Subir demo a Github.");
-				scrum_AddToDone("CHESS","Web - Mostrar mensaje al guardar.");
-				scrum_AddToDone("CHESS","App - Remover el Toast al guardar.");
-				scrum_AddToDone("NINTENDO","Clear timeout de gui_saved.");
-				scrum_AddToDone("NINTENDO","Remover condicionales de iOS.");
-				scrum_AddToDone("EMULATRIX","DOS - Clear timeout de gui_saved.");
-				scrum_AddToDone("WEBTOAPP","Android - Agregar permiso Internet.");
-				scrum_AddToDone("WEBTOAPP","Mac - Agregar permiso Internet.");
-				scrum_AddToDone("EMULATRIX","App - Remover imports sin usar.");
-				scrum_AddToDone("WEBTOAPP","Android - Implementar upload.");
-				scrum_AddToDone("WEBTOAPP","Android - Implementar download.");
-				scrum_AddToDone("WEBTOAPP","Mac - Implementar upload.");
-				scrum_AddToDone("WEBTOAPP","Mac - Implementar download.");
-				scrum_AddToDone("WEBTOAPP","Mac - Implementar sufijos.");
-				scrum_AddToDone("WEBTOAPP","iOS - Implementar upload.");
-				scrum_AddToDone("WEBTOAPP","iOS - Implementar target mínimo.");
-				scrum_AddToDone("WEBTOAPP","iOS - Implementar status bar.");
-				scrum_AddToDone("WEBTOAPP","iOS - Implementar download.");
-				scrum_AddToDone("BANNER GENERATOR","Optimizar resize en smartphones.");
-				scrum_AddToDone("ARDUINO SIMULATOR","Implementar Serial.available y read.");
-				scrum_AddToDone("ARDUINO SIMULATOR","Bugfix: Serial.read() con áéíóúñ.");
-				scrum_AddToDone("ARDUINO SIMULATOR","Limpiar el GIF de la rueda.");
-				}
-		</script>
+		<script src="tinyDOC.js"></script>
 	</body>
 </html>
