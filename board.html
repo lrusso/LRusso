@@ -111,16 +111,16 @@
 			function alertCustom(title,message,accept){try{var alertContainer = document.createElement("div");alertContainer.style.position = "fixed";alertContainer.style.top = 0;alertContainer.style.bottom = 0;alertContainer.style.left = 0;alertContainer.style.right = 0;alertContainer.style.zIndex = 9999;alertContainer.style.backgroundColor = "rgba(0,0,0,0.5)";var alertForm = document.createElement("div");alertForm.style.position = "relative";alertForm.style.top = "50%";alertForm.style.left = 0;alertForm.style.right = 0;alertForm.style.marginLeft = "auto";alertForm.style.marginRight = "auto";alertForm.style.transform = "translateY(-50%)";alertForm.style.width = "300px";alertForm.style.backgroundColor = "#f2f2f2";alertForm.style.textAlign = "center";var alertTitle = document.createElement("div");alertTitle.style.textAlign = "left";alertTitle.style.paddingLeft = "10px";alertTitle.style.backgroundColor = "#3a76b1";alertTitle.style.fontFamily = "Arial";alertTitle.style.fontSize = "16px";alertTitle.style.fontWeight = "bold";alertTitle.style.color = "white";alertTitle.style.lineHeight = 2.5;alertTitle.innerHTML = title;var alertMessage = document.createElement("div");alertMessage.style.padding = "20px";alertMessage.style.fontFamily = "Arial";alertMessage.style.fontSize = "16px";alertMessage.style.color = "black";alertMessage.style.textAlign = "center";alertMessage.style.lineHeight = 2;alertMessage.innerHTML = message;var alertButton = document.createElement("div");alertButton.style.padding = "10px";alertButton.style.backgroundColor = "#d2d2d2";alertButton.style.border = "1px solid #b2b2b2";alertButton.style.fontFamily = "Arial";alertButton.style.fontSize = "16px";alertButton.style.color = "black";alertButton.style.textAlign = "center";alertButton.style.lineHeight = 1.5;alertButton.style.display = "inline-block";alertButton.style.marginBottom = "10px";alertButton.style.paddingLeft = "40px";alertButton.style.paddingRight = "40px";alertButton.style.cursor = "pointer";alertButton.addEventListener("click",function(event){document.body.removeChild(alertContainer);});alertButton.innerHTML = accept;alertForm.appendChild(alertTitle);alertForm.appendChild(alertMessage);alertForm.appendChild(alertButton);alertContainer.appendChild(alertForm);document.body.appendChild(alertContainer);}catch(err){}}
 
 			function scrum_NewTask(project,task){return{project:project,task:task}}
-			function scrum_AddDataToColumns(){scrum_AddDataToColumn1()}
-			function scrum_AddDataToColumn1(){var scrum_from=scrum_PendingColumn;var scrum_to="scrum_column_pending";var scrum_counter=-1;function loop(){if(scrum_counter<scrum_from.length-1){scrum_counter=scrum_counter+1;try{document.getElementsByClassName(scrum_to)[0].innerHTML = document.getElementsByClassName(scrum_to)[0].innerHTML+"<div class='scrum_task'><div class='scrum_task_details'>"+scrum_from[scrum_counter].task+"</div><div class='scrum_task_project'>"+scrum_from[scrum_counter].project+"</div></div>";}catch(err){}setTimeout(loop,20);}else{scrum_AddDataToColumn2();}}loop();}
-			function scrum_AddDataToColumn2(){var scrum_from=scrum_DevelopmentColumn;var scrum_to="scrum_column_development";var scrum_counter=-1;function loop(){if(scrum_counter<scrum_from.length-1){scrum_counter=scrum_counter+1;try{document.getElementsByClassName(scrum_to)[0].innerHTML = document.getElementsByClassName(scrum_to)[0].innerHTML+"<div class='scrum_task'><div class='scrum_task_details'>"+scrum_from[scrum_counter].task+"</div><div class='scrum_task_project'>"+scrum_from[scrum_counter].project+"</div></div>";}catch(err){}setTimeout(loop,20);}else{scrum_AddDataToColumn3();}}loop();}
-			function scrum_AddDataToColumn3(){var scrum_from=scrum_ReadyForTestColumn;var scrum_to="scrum_column_test";var scrum_counter=-1;function loop(){if(scrum_counter<scrum_from.length-1){scrum_counter=scrum_counter+1;try{document.getElementsByClassName(scrum_to)[0].innerHTML = document.getElementsByClassName(scrum_to)[0].innerHTML+"<div class='scrum_task'><div class='scrum_task_details'>"+scrum_from[scrum_counter].task+"</div><div class='scrum_task_project'>"+scrum_from[scrum_counter].project+"</div></div>";}catch(err){}setTimeout(loop,20);}else{scrum_AddDataToColumn4();}}loop();}
-			function scrum_AddDataToColumn4(){var scrum_from=scrum_DoneColumn;var scrum_to="scrum_column_done";var scrum_counter=-1;function loop(){if(scrum_counter<scrum_from.length-1){scrum_counter=scrum_counter+1;try{document.getElementsByClassName(scrum_to)[0].innerHTML = document.getElementsByClassName(scrum_to)[0].innerHTML+"<div class='scrum_task'><div class='scrum_task_details'>"+scrum_from[scrum_counter].task+"</div><div class='scrum_task_project'>"+scrum_from[scrum_counter].project+"</div></div>";}catch(err){}setTimeout(loop,20);}else{scrum_ShowBoard();}}loop();}
+			function scrum_DataToColumns(){scrum_DataToColumn1()}
+			function scrum_DataToColumn1(){var scrum_from=scrum_PendingColumn;var scrum_to="scrum_column_pending";var scrum_counter=-1;function loop(){if(scrum_counter<scrum_from.length-1){scrum_counter=scrum_counter+1;try{document.getElementsByClassName(scrum_to)[0].innerHTML = document.getElementsByClassName(scrum_to)[0].innerHTML+"<div class='scrum_task'><div class='scrum_task_details'>"+scrum_from[scrum_counter].task+"</div><div class='scrum_task_project'>"+scrum_from[scrum_counter].project+"</div></div>";}catch(err){}setTimeout(loop,20);}else{scrum_DataToColumn2();}}loop();}
+			function scrum_DataToColumn2(){var scrum_from=scrum_DevelopmentColumn;var scrum_to="scrum_column_development";var scrum_counter=-1;function loop(){if(scrum_counter<scrum_from.length-1){scrum_counter=scrum_counter+1;try{document.getElementsByClassName(scrum_to)[0].innerHTML = document.getElementsByClassName(scrum_to)[0].innerHTML+"<div class='scrum_task'><div class='scrum_task_details'>"+scrum_from[scrum_counter].task+"</div><div class='scrum_task_project'>"+scrum_from[scrum_counter].project+"</div></div>";}catch(err){}setTimeout(loop,20);}else{scrum_DataToColumn3();}}loop();}
+			function scrum_DataToColumn3(){var scrum_from=scrum_ReadyForTestColumn;var scrum_to="scrum_column_test";var scrum_counter=-1;function loop(){if(scrum_counter<scrum_from.length-1){scrum_counter=scrum_counter+1;try{document.getElementsByClassName(scrum_to)[0].innerHTML = document.getElementsByClassName(scrum_to)[0].innerHTML+"<div class='scrum_task'><div class='scrum_task_details'>"+scrum_from[scrum_counter].task+"</div><div class='scrum_task_project'>"+scrum_from[scrum_counter].project+"</div></div>";}catch(err){}setTimeout(loop,20);}else{scrum_DataToColumn4();}}loop();}
+			function scrum_DataToColumn4(){var scrum_from=scrum_DoneColumn;var scrum_to="scrum_column_done";var scrum_counter=-1;function loop(){if(scrum_counter<scrum_from.length-1){scrum_counter=scrum_counter+1;try{document.getElementsByClassName(scrum_to)[0].innerHTML = document.getElementsByClassName(scrum_to)[0].innerHTML+"<div class='scrum_task'><div class='scrum_task_details'>"+scrum_from[scrum_counter].task+"</div><div class='scrum_task_project'>"+scrum_from[scrum_counter].project+"</div></div>";}catch(err){}setTimeout(loop,20);}else{scrum_ShowBoard();}}loop();}
 			function scrum_ShowBoard(){setTimeout(function(){document.getElementsByClassName("scrum")[0].style.display = "block";document.getElementsByClassName("loading")[0].style.display = "none";},500);if(web_ToCheck.length>0){setTimeout(function(){document.getElementsByClassName("menu_item_checking")[0].style.display = "block";document.getElementsByClassName("menu_item_checking")[0].innerHTML = "<div class='loading_spinner2_container'><div class='loading_spinner2_spinner'></div></div>";web_CheckAll();},750);}}
-			function scrum_Pending(a,b){scrum_PendingColumn.push(scrum_NewTask(a,b))}
-			function scrum_Development(a,b){scrum_DevelopmentColumn.push(scrum_NewTask(a,b))}
-			function scrum_Testing(a,b){scrum_ReadyForTestColumn.push(scrum_NewTask(a,b))}
-			function scrum_Done(a,b){scrum_DoneColumn.push(scrum_NewTask(a,b))}
+			function scrum_AddToPending(a,b){scrum_PendingColumn.push(scrum_NewTask(a,b))}
+			function scrum_AddToDevelopment(a,b){scrum_DevelopmentColumn.push(scrum_NewTask(a,b))}
+			function scrum_AddToTesting(a,b){scrum_ReadyForTestColumn.push(scrum_NewTask(a,b))}
+			function scrum_AddToDone(a,b){scrum_DoneColumn.push(scrum_NewTask(a,b))}
 
 			function web_NewCheck(url,find,mustBeFound){return{url:url,find:find,mustBeFound:mustBeFound}}
 			function web_Check(a,b,c){web_ToCheck.push(web_NewCheck(a,b,c))}
@@ -132,7 +132,7 @@
 			function web_Check_4(){try{var url_4=web_ToCheck[3].url;var find_4=web_ToCheck[3].find.toLowerCase();var found_4=web_ToCheck[3].mustBeFound;var timestamp_4=new Date().getTime();var checking_4=new XMLHttpRequest();checking_4.open("GET",web_Proxy+url_4+"?timestamp="+timestamp_4,true);checking_4.onload=function(oEvent){var showAlert_4=false;if(this.status===404){showAlert_4=true;}else{var response=checking_4.response.toLowerCase();if(response.length>0){if((response.indexOf(find_4)>-1&&found_4==true)||(response.indexOf(find_4)==-1&&found_4==false)){showAlert_4=true;}}else{showAlert_4=true;}}web_Counter=web_Counter+1;if(web_Counter==web_ToCheck.length){document.getElementsByClassName("menu_item_checking")[0].style.display="none";}if(showAlert_4==true){alertCustom(STRING_ERROREXTENSION_TITLE,STRING_ERROREXTENSION_MESSAGE+"<a href='"+url_4+"' target='_blank' class='check_link'>"+url_4+"</a>",STRING_ERROREXTENSION_ACCEPT);}};checking_4.onerror=function(){setTimeout(function(){web_Check_4()},1000)};checking_4.ontimeout=function(){web_Check_4()};checking_4.timeout=15000;checking_4.send();}catch(err){}}
 			function web_Check_5(){try{var url_5=web_ToCheck[4].url;var find_5=web_ToCheck[4].find.toLowerCase();var found_5=web_ToCheck[4].mustBeFound;var timestamp_5=new Date().getTime();var checking_5=new XMLHttpRequest();checking_5.open("GET",web_Proxy+url_5+"?timestamp="+timestamp_5,true);checking_5.onload=function(oEvent){var showAlert_5=false;if(this.status===404){showAlert_5=true;}else{var response=checking_5.response.toLowerCase();if(response.length>0){if((response.indexOf(find_5)>-1&&found_5==true)||(response.indexOf(find_5)==-1&&found_5==false)){showAlert_5=true;}}else{showAlert_5=true;}}web_Counter=web_Counter+1;if(web_Counter==web_ToCheck.length){document.getElementsByClassName("menu_item_checking")[0].style.display="none";}if(showAlert_5==true){alertCustom(STRING_ERROREXTENSION_TITLE,STRING_ERROREXTENSION_MESSAGE+"<a href='"+url_5+"' target='_blank' class='check_link'>"+url_5+"</a>",STRING_ERROREXTENSION_ACCEPT);}};checking_5.onerror=function(){setTimeout(function(){web_Check_5()},1000)};checking_5.ontimeout=function(){web_Check_5()};checking_5.timeout=15000;checking_5.send();}catch(err){}}
 
-			function showBoard(){scrum_AddDataToColumns()}
+			function showBoard(){scrum_DataToColumns()}
 
 			var scrum_PendingColumn = [];
 			var scrum_DevelopmentColumn = [];
@@ -194,59 +194,59 @@
 
 			function loadingTasks()
 				{
-				scrum_Pending("ARDUCLEANER","Regular motores con batería.");
-				scrum_Pending("ARDUCLEANER","Nuevo vídeo de demostración.");
-				scrum_Pending("TALKINGHEAD","Movimiento de ojos.");
-				scrum_Pending("TALKINGHEAD","Movimiento de boca.");
-				scrum_Pending("TALKINGHEAD","Función de texto a voz.");
-				scrum_Pending("NINTENDO","ScrollWrite sin márgenes.");
-				scrum_Pending("TINYPET","Mascota virtual en Phaser.");
-				scrum_Pending("POOL","Bolas con texturas que rotan.");
-				scrum_Pending("ARDUINO SIMULATOR","Serial.read() con ASCII extendido.");
-				scrum_Pending("ARDUINO SIMULATOR","Implementar la clase String.");
-				scrum_Pending("ARDUINO SIMULATOR","Implementar el Serial.readString().");
-				scrum_Pending("ARDUINO SIMULATOR","Implementar print conversor. <a href='https://www.arduino.cc/reference/en/language/functions/communication/serial/print' target='_blank'>Leer</a>");
-				scrum_Pending("WEBTOAPP","iOS - Implementar fullscreen. <a href='https://stackoverflow.com/questions/47244002/make-wkwebview-real-fullscreen-on-iphone-x-remove-safe-area-from-wkwebview' target='_blank'>Leer</a>");
-				scrum_Pending("WEBTOAPP","iOS - Habilitar descarga binaria.");
-				scrum_Pending("WEBTOAPP","Mac - Habilitar descarga binaria.");
-				scrum_Pending("FOLLOW MY VOICE","Publicar sin registro de llamadas.");
-				scrum_Pending("MOBILITY LAUNCHER","Publicar sin registro de llamadas.");
-				scrum_Pending("BLIND COMMUNICATOR","Publicar sin registro de llamadas.");
+				scrum_AddToPending("ARDUCLEANER","Regular motores con batería.");
+				scrum_AddToPending("ARDUCLEANER","Nuevo vídeo de demostración.");
+				scrum_AddToPending("TALKINGHEAD","Movimiento de ojos.");
+				scrum_AddToPending("TALKINGHEAD","Movimiento de boca.");
+				scrum_AddToPending("TALKINGHEAD","Función de texto a voz.");
+				scrum_AddToPending("NINTENDO","ScrollWrite sin márgenes.");
+				scrum_AddToPending("TINYPET","Mascota virtual en Phaser.");
+				scrum_AddToPending("POOL","Bolas con texturas que rotan.");
+				scrum_AddToPending("ARDUINO SIMULATOR","Serial.read() con ASCII extendido.");
+				scrum_AddToPending("ARDUINO SIMULATOR","Implementar la clase String.");
+				scrum_AddToPending("ARDUINO SIMULATOR","Implementar el Serial.readString().");
+				scrum_AddToPending("ARDUINO SIMULATOR","Implementar print conversor. <a href='https://www.arduino.cc/reference/en/language/functions/communication/serial/print' target='_blank'>Leer</a>");
+				scrum_AddToPending("WEBTOAPP","iOS - Implementar fullscreen. <a href='https://stackoverflow.com/questions/47244002/make-wkwebview-real-fullscreen-on-iphone-x-remove-safe-area-from-wkwebview' target='_blank'>Leer</a>");
+				scrum_AddToPending("WEBTOAPP","iOS - Habilitar descarga binaria.");
+				scrum_AddToPending("FOLLOW MY VOICE","Publicar sin registro de llamadas.");
+				scrum_AddToPending("MOBILITY LAUNCHER","Publicar sin registro de llamadas.");
+				scrum_AddToPending("BLIND COMMUNICATOR","Publicar sin registro de llamadas.");
 
-				scrum_Development("ARDUINO SIMULATOR","Limpiar el GIF de la rueda.");
+				scrum_AddToDevelopment("WEBTOAPP","Mac - Habilitar descarga binaria.");
 
-				//scrum_Testing("POOL","Lógica de predicción de tiro.");
+				//scrum_AddToTesting("POOL","Lógica de predicción de tiro.");
 
-				scrum_Done("POOL","Lógica de predicción de tiro.");
-				scrum_Done("EMULATRIX","Optimizar la emulación de Windows.");
-				scrum_Done("EMULATRIX","Implementar PKZip.");
-				scrum_Done("TINYEPUB","Que vaya a la ruta CFI guardada.");
-				scrum_Done("TINYEPUB","Implementar Custom Alert.");
-				scrum_Done("NINTENDO","Implementar Custom Alert.");
-				scrum_Done("TINYACE","Implementar Custom Confirm.");
-				scrum_Done("SPIDER","Mac - Ventana recuerda la posición.");
-				scrum_Done("SPIDER","Mac - Ventana recuerda el tamaño.");
-				scrum_Done("WEBTOAPP","Subir demo a Github.");
-				scrum_Done("CHESS","Web - Mostrar mensaje al guardar.");
-				scrum_Done("CHESS","App - Remover el Toast al guardar.");
-				scrum_Done("NINTENDO","Clear timeout de gui_saved.");
-				scrum_Done("NINTENDO","Remover condicionales de iOS.");
-				scrum_Done("EMULATRIX","DOS - Clear timeout de gui_saved.");
-				scrum_Done("WEBTOAPP","Android - Agregar permiso Internet.");
-				scrum_Done("WEBTOAPP","Mac - Agregar permiso Internet.");
-				scrum_Done("EMULATRIX","App - Remover imports sin usar.");
-				scrum_Done("WEBTOAPP","Android - Implementar upload.");
-				scrum_Done("WEBTOAPP","Android - Implementar download.");
-				scrum_Done("WEBTOAPP","Mac - Implementar upload.");
-				scrum_Done("WEBTOAPP","Mac - Implementar download.");
-				scrum_Done("WEBTOAPP","Mac - Implementar sufijos.");
-				scrum_Done("WEBTOAPP","iOS - Implementar upload.");
-				scrum_Done("WEBTOAPP","iOS - Implementar target mínimo.");
-				scrum_Done("WEBTOAPP","iOS - Implementar status bar.");
-				scrum_Done("WEBTOAPP","iOS - Implementar download.");
-				scrum_Done("BANNER GENERATOR","Optimizar resize en smartphones.");
-				scrum_Done("ARDUINO SIMULATOR","Implementar Serial.available y read.");
-				scrum_Done("ARDUINO SIMULATOR","Bugfix: Serial.read() con áéíóúñ.");
+				scrum_AddToDone("POOL","Lógica de predicción de tiro.");
+				scrum_AddToDone("EMULATRIX","Optimizar la emulación de Windows.");
+				scrum_AddToDone("EMULATRIX","Implementar PKZip.");
+				scrum_AddToDone("TINYEPUB","Que vaya a la ruta CFI guardada.");
+				scrum_AddToDone("TINYEPUB","Implementar Custom Alert.");
+				scrum_AddToDone("NINTENDO","Implementar Custom Alert.");
+				scrum_AddToDone("TINYACE","Implementar Custom Confirm.");
+				scrum_AddToDone("SPIDER","Mac - Ventana recuerda la posición.");
+				scrum_AddToDone("SPIDER","Mac - Ventana recuerda el tamaño.");
+				scrum_AddToDone("WEBTOAPP","Subir demo a Github.");
+				scrum_AddToDone("CHESS","Web - Mostrar mensaje al guardar.");
+				scrum_AddToDone("CHESS","App - Remover el Toast al guardar.");
+				scrum_AddToDone("NINTENDO","Clear timeout de gui_saved.");
+				scrum_AddToDone("NINTENDO","Remover condicionales de iOS.");
+				scrum_AddToDone("EMULATRIX","DOS - Clear timeout de gui_saved.");
+				scrum_AddToDone("WEBTOAPP","Android - Agregar permiso Internet.");
+				scrum_AddToDone("WEBTOAPP","Mac - Agregar permiso Internet.");
+				scrum_AddToDone("EMULATRIX","App - Remover imports sin usar.");
+				scrum_AddToDone("WEBTOAPP","Android - Implementar upload.");
+				scrum_AddToDone("WEBTOAPP","Android - Implementar download.");
+				scrum_AddToDone("WEBTOAPP","Mac - Implementar upload.");
+				scrum_AddToDone("WEBTOAPP","Mac - Implementar download.");
+				scrum_AddToDone("WEBTOAPP","Mac - Implementar sufijos.");
+				scrum_AddToDone("WEBTOAPP","iOS - Implementar upload.");
+				scrum_AddToDone("WEBTOAPP","iOS - Implementar target mínimo.");
+				scrum_AddToDone("WEBTOAPP","iOS - Implementar status bar.");
+				scrum_AddToDone("WEBTOAPP","iOS - Implementar download.");
+				scrum_AddToDone("BANNER GENERATOR","Optimizar resize en smartphones.");
+				scrum_AddToDone("ARDUINO SIMULATOR","Implementar Serial.available y read.");
+				scrum_AddToDone("ARDUINO SIMULATOR","Bugfix: Serial.read() con áéíóúñ.");
+				scrum_AddToDone("ARDUINO SIMULATOR","Limpiar el GIF de la rueda.");
 				}
 		</script>
 	</body>
