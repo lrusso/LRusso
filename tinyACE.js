@@ -201,7 +201,7 @@ try
 	editor.getSession().on("change", function()
 		{
 		// THE DOCUMENT WILL BE DIRTY
-		window.onbeforeunload = function(e){return "changed";};
+		window.onbeforeunload = function(e){return "dirty";};
 
 		// THE UNDO BUTTON WILL BE ENABLED
 		document.getElementById("buttonUndo").classList.add("tinyace_button_undo_enabled");
@@ -496,6 +496,9 @@ function menuInsert(file)
 
 			// GETTING FOCUS IN THE EDITOR
 			editor.focus();
+
+			// THE DOCUMENT WILL BE DIRTY
+			window.onbeforeunload = function(e){return "dirty";};
 
 			// CLEARING THE SELECTED FILE VALUE
 			document.getElementById("fileInserter").value = null;
