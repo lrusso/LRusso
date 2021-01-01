@@ -46,6 +46,11 @@
 			.scrum_task_details{float:left;width:243px;line-height:1.5;margin-top:5px}
 			.scrum_task_details a{text-decoration:none;color:#3a76b1;outline:none}
 			.scrum_task_project{float:left;color:gray;margin-bottom:3px}
+			.scrum_readmore{float:left;display:inline-block;width:100%;text-align:center;padding-top:5px;padding-bottom:15px}
+			.scrum_hidden1{display:none}
+			.scrum_hidden2{display:none}
+			.scrum_hidden3{display:none}
+			.scrum_hidden4{display:none}
 
 			@media screen and (min-width: 1920px)
 				{
@@ -131,15 +136,24 @@
 
 			function scrum_NewTask(project,task){return{project:project,task:task}}
 			function scrum_DataToColumns(){scrum_DataToColumn1()}
-			function scrum_DataToColumn1(){var scrum_from=scrum_PendingColumn;var scrum_to="scrum_column_pending";var scrum_counter=-1;function loop(){if(scrum_counter<scrum_from.length-1){scrum_counter=scrum_counter+1;try{document.getElementsByClassName(scrum_to)[0].innerHTML = document.getElementsByClassName(scrum_to)[0].innerHTML+"<div class='scrum_task'><div class='scrum_task_details'>"+scrum_from[scrum_counter].task+"</div><div class='scrum_task_project'>"+scrum_from[scrum_counter].project+"</div></div>";}catch(err){}setTimeout(loop,20);}else{scrum_DataToColumn2();}}loop();}
-			function scrum_DataToColumn2(){var scrum_from=scrum_DevelopmentColumn;var scrum_to="scrum_column_development";var scrum_counter=-1;function loop(){if(scrum_counter<scrum_from.length-1){scrum_counter=scrum_counter+1;try{document.getElementsByClassName(scrum_to)[0].innerHTML = document.getElementsByClassName(scrum_to)[0].innerHTML+"<div class='scrum_task'><div class='scrum_task_details'>"+scrum_from[scrum_counter].task+"</div><div class='scrum_task_project'>"+scrum_from[scrum_counter].project+"</div></div>";}catch(err){}setTimeout(loop,20);}else{scrum_DataToColumn3();}}loop();}
-			function scrum_DataToColumn3(){var scrum_from=scrum_ReadyForTestColumn;var scrum_to="scrum_column_test";var scrum_counter=-1;function loop(){if(scrum_counter<scrum_from.length-1){scrum_counter=scrum_counter+1;try{document.getElementsByClassName(scrum_to)[0].innerHTML = document.getElementsByClassName(scrum_to)[0].innerHTML+"<div class='scrum_task'><div class='scrum_task_details'>"+scrum_from[scrum_counter].task+"</div><div class='scrum_task_project'>"+scrum_from[scrum_counter].project+"</div></div>";}catch(err){}setTimeout(loop,20);}else{scrum_DataToColumn4();}}loop();}
-			function scrum_DataToColumn4(){var scrum_from=scrum_DoneColumn;var scrum_to="scrum_column_done";var scrum_counter=-1;function loop(){if(scrum_counter<scrum_from.length-1){scrum_counter=scrum_counter+1;try{document.getElementsByClassName(scrum_to)[0].innerHTML = document.getElementsByClassName(scrum_to)[0].innerHTML+"<div class='scrum_task'><div class='scrum_task_details'>"+scrum_from[scrum_counter].task+"</div><div class='scrum_task_project'>"+scrum_from[scrum_counter].project+"</div></div>";}catch(err){}setTimeout(loop,20);}else{scrum_ShowBoard();}}loop();}
+			function scrum_DataToColumn1(){var scrum_from=scrum_PendingColumn;var scrum_to="scrum_column_pending";var scrum_task_showmore = "scrum_readmore scrum_showmore1";var scrum_task_hidden = "scrum_task scrum_hidden1";var scrum_task_normal = "scrum_task";var scrum_counter=-1;function loop(){if(scrum_counter<scrum_from.length-1){scrum_counter=scrum_counter+1;try{var finalClassName=scrum_task_normal;if(scrum_counter>20){finalClassName = scrum_task_hidden;}document.getElementsByClassName(scrum_to)[0].innerHTML = document.getElementsByClassName(scrum_to)[0].innerHTML+"<div class='" + finalClassName + "'><div class='scrum_task_details'>"+scrum_from[scrum_counter].task+"</div><div class='scrum_task_project'>"+scrum_from[scrum_counter].project+"</div></div>";if(scrum_counter==20){document.getElementsByClassName(scrum_to)[0].innerHTML = document.getElementsByClassName(scrum_to)[0].innerHTML+"<div class='" + scrum_task_showmore + "' onclick='scrum_ShowMore(\"" + scrum_task_hidden + "\",\"" + scrum_task_showmore + "\")'>" + STRING_SHOWMORE +"</div>";}}catch(err){}setTimeout(loop,20);}else{scrum_DataToColumn2();}}loop();}
+			function scrum_DataToColumn2(){var scrum_from=scrum_DevelopmentColumn;var scrum_to="scrum_column_development";var scrum_task_showmore = "scrum_readmore scrum_showmore2";var scrum_task_hidden = "scrum_task scrum_hidden2";var scrum_task_normal = "scrum_task";var scrum_counter=-1;function loop(){if(scrum_counter<scrum_from.length-1){scrum_counter=scrum_counter+1;try{var finalClassName=scrum_task_normal;if(scrum_counter>20){finalClassName = scrum_task_hidden;}document.getElementsByClassName(scrum_to)[0].innerHTML = document.getElementsByClassName(scrum_to)[0].innerHTML+"<div class='" + finalClassName + "'><div class='scrum_task_details'>"+scrum_from[scrum_counter].task+"</div><div class='scrum_task_project'>"+scrum_from[scrum_counter].project+"</div></div>";if(scrum_counter==20){document.getElementsByClassName(scrum_to)[0].innerHTML = document.getElementsByClassName(scrum_to)[0].innerHTML+"<div class='" + scrum_task_showmore + "' onclick='scrum_ShowMore(\"" + scrum_task_hidden + "\",\"" + scrum_task_showmore + "\")'>" + STRING_SHOWMORE +"</div>";}}catch(err){}setTimeout(loop,20);}else{scrum_DataToColumn3();}}loop();}
+			function scrum_DataToColumn3(){var scrum_from=scrum_ReadyForTestColumn;var scrum_to="scrum_column_test";var scrum_task_showmore = "scrum_readmore scrum_showmore3";var scrum_task_hidden = "scrum_task scrum_hidden3";var scrum_task_normal = "scrum_task";var scrum_counter=-1;function loop(){if(scrum_counter<scrum_from.length-1){scrum_counter=scrum_counter+1;try{var finalClassName=scrum_task_normal;if(scrum_counter>20){finalClassName = scrum_task_hidden;}document.getElementsByClassName(scrum_to)[0].innerHTML = document.getElementsByClassName(scrum_to)[0].innerHTML+"<div class='" + finalClassName + "'><div class='scrum_task_details'>"+scrum_from[scrum_counter].task+"</div><div class='scrum_task_project'>"+scrum_from[scrum_counter].project+"</div></div>";if(scrum_counter==20){document.getElementsByClassName(scrum_to)[0].innerHTML = document.getElementsByClassName(scrum_to)[0].innerHTML+"<div class='" + scrum_task_showmore + "' onclick='scrum_ShowMore(\"" + scrum_task_hidden + "\",\"" + scrum_task_showmore + "\")'>" + STRING_SHOWMORE +"</div>";}}catch(err){}setTimeout(loop,20);}else{scrum_DataToColumn4();}}loop();}
+			function scrum_DataToColumn4(){var scrum_from=scrum_DoneColumn;var scrum_to="scrum_column_done";var scrum_task_showmore = "scrum_readmore scrum_showmore4";var scrum_task_hidden = "scrum_task scrum_hidden4";var scrum_task_normal = "scrum_task";var scrum_counter=-1;function loop(){if(scrum_counter<scrum_from.length-1){scrum_counter=scrum_counter+1;try{var finalClassName=scrum_task_normal;if(scrum_counter>20){finalClassName = scrum_task_hidden;}document.getElementsByClassName(scrum_to)[0].innerHTML = document.getElementsByClassName(scrum_to)[0].innerHTML+"<div class='" + finalClassName + "'><div class='scrum_task_details'>"+scrum_from[scrum_counter].task+"</div><div class='scrum_task_project'>"+scrum_from[scrum_counter].project+"</div></div>";if(scrum_counter==20){document.getElementsByClassName(scrum_to)[0].innerHTML = document.getElementsByClassName(scrum_to)[0].innerHTML+"<div class='" + scrum_task_showmore + "' onclick='scrum_ShowMore(\"" + scrum_task_hidden + "\",\"" + scrum_task_showmore + "\")'>" + STRING_SHOWMORE +"</div>";}}catch(err){}setTimeout(loop,20);}else{scrum_ShowBoard();}}loop();}
 			function scrum_ShowBoard(){setTimeout(function(){document.getElementsByClassName("scrum")[0].style.display = "block";document.getElementsByClassName("loading")[0].style.display = "none";},500)}
 			function scrum_AddToPending(a,b){scrum_PendingColumn.push(scrum_NewTask(a,b))}
 			function scrum_AddToDevelopment(a,b){scrum_DevelopmentColumn.push(scrum_NewTask(a,b))}
 			function scrum_AddToTesting(a,b){scrum_ReadyForTestColumn.push(scrum_NewTask(a,b))}
 			function scrum_AddToDone(a,b){scrum_DoneColumn.push(scrum_NewTask(a,b))}
+			function scrum_ShowMore(a,b)
+				{
+				for (var i=0;i<document.getElementsByClassName(a).length;i++)
+					{
+					document.getElementsByClassName(a)[i].style.display = "block";
+					}
+
+				document.getElementsByClassName(b)[0].style.display = "none";
+				}
 
 			function showBoard(){scrum_DataToColumns()}
 
@@ -152,6 +166,7 @@
 			var STRING_DEVELOPMENT = "";
 			var STRING_READYFORTEST = "";
 			var STRING_DONE = "";
+			var STRING_SHOWMORE = "";
 
 			var userLanguage = window.navigator.userLanguage || window.navigator.language;
 			if (userLanguage.substring(0,2)=="es")
@@ -160,6 +175,7 @@
 				STRING_DEVELOPMENT = "EN DESARROLLO";
 				STRING_READYFORTEST = "LISTAS PARA PRUEBAS";
 				STRING_DONE = "TERMINADAS";
+				STRING_SHOWMORE = "Mostrar m&aacute;s";
 				}
 				else
 				{
@@ -167,6 +183,7 @@
 				STRING_DEVELOPMENT = "IN DEVELOPMENT";
 				STRING_READYFORTEST = "READY FOR TEST";
 				STRING_DONE = "DONE";
+				STRING_SHOWMORE = "Show more";
 				}
 
 			window.addEventListener("load", function()
