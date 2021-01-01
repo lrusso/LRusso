@@ -37,30 +37,7 @@
 			.menu_item_selected{background-color:#3a76b1;color:white}
 			.menu_link{text-decoration:none;color:black;outline:none}
 
-			.scrum{display:none;width:100%;overflow-x:scroll;outline:none;scrollbar-width:none}
-			.scrum::-webkit-scrollbar{display:none}
-			.scrum_wrapper{float:left;width:1137px}
-			.scrum_column{display:block;float:left;background-color:#ebecf0;border-radius:3px;width:272px;margin:5px 0 10px 10px;color:#172b4d;font-weight:bold;font-size:14px;font-family:-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif}
-			.scrum_column_title{margin:7px;padding:5px}
-			.scrum_task{float:left;background-color:white;margin-left:8px;width:241px;border-radius:3px;box-shadow:0 1px 2px rgba(9,30,66,.25);font-weight:normal;line-height:2;padding-left:7px;padding-right:7px;margin-bottom:10px}
-			.scrum_task_details{float:left;width:243px;line-height:1.5;margin-top:5px}
-			.scrum_task_details a{text-decoration:none;color:#3a76b1;outline:none}
-			.scrum_task_project{float:left;color:gray;margin-bottom:3px}
-			.scrum_readmore{float:left;display:inline-block;width:100%;text-align:center;padding-top:5px;padding-bottom:5px;margin-bottom:10px;cursor:pointer}
-			.scrum_hidden1{display:none}
-			.scrum_hidden2{display:none}
-			.scrum_hidden3{display:none}
-			.scrum_hidden4{display:none}
-
-			@media screen and (min-width: 1920px)
-				{
-				.scrum_wrapper{width:1837px}
-				.scrum_column{width:382px}
-				.scrum_task{width:351px}
-				.scrum_task_details{width:353px}
-				}
-
-			.check_link{text-decoration:none;color:#3a76b1;outline:none}
+			#myScrumBoard_Container{display:none}
 
 			.loading{position:fixed;left:0;right:0;top:0;bottom:0;background-color:black;z-index:999}
 			.loading_icon{position:fixed;width:64px;height:64px;left:0;right:0;top:0;bottom:0;margin:auto auto;border:0;z-index:9}
@@ -80,10 +57,6 @@
 			.loading_spinner div:nth-child(11){transform:rotate(300deg);animation-delay:-0.1s}
 			.loading_spinner div:nth-child(12){transform:rotate(330deg);animation-delay:0s}
 			@keyframes loading_spinner{0%{opacity:1}100%{opacity:0}}
-
-			.loading_spinner2_container{position:relative}
-			.loading_spinner2_spinner:before{content:"";box-sizing:border-box;position:absolute;margin-top:5px;width:20px;height:20px;border-radius:50%;border:2px solid #ccc;border-top-color:#3f729b;animation:loading_spinner2_spinner .6s linear infinite;}
-			@keyframes loading_spinner2_spinner{to{transform: rotate(360deg);}}
 
 			.myCalendar{position:absolute;right:0;top:40px;display:none}
 			.myCalendarLauncher{position:absolute;right:0px;top:0px;cursor:pointer;font-family:Arial;font-size:15px;padding-left:20px;padding-right:12px;padding-top:12px;padding-bottom:12px;display:none}
@@ -110,88 +83,40 @@
 		</div>
 		<div class="myCalendar"></div>
 		<div class="myCalendarLauncher"></div>
-		<div class="scrum">
-			<div class="scrum_wrapper">
-				<div class="scrum_column">
-					<div class="scrum_column_title"></div>
-					<div class="scrum_column_pending"></div>
-				</div>
-				<div class="scrum_column">
-					<div class="scrum_column_title"></div>
-					<div class="scrum_column_development"></div>
-				</div>
-				<div class="scrum_column">
-					<div class="scrum_column_title"></div>
-					<div class="scrum_column_test"></div>
-				</div>
-				<div class="scrum_column">
-					<div class="scrum_column_title"></div>
-					<div class="scrum_column_done"></div>
-				</div>
-			</div>
-		</div>
+		<div id="myScrumBoard_Container"></div>
 		<script>
 			// Calendar.js - https://github.com/lrusso/Calendar
 			class Calendar{constructor(t){this.warpper=null,this.monthData=null,this.params=t,this.init(this.params)}init(t){this.warpper=t.dom,this.render("",t);var e=this;this.warpper.addEventListener("click",function(t){try{var a=t.target;"calendar_prev_date_btn"===a.id||"calendar_prev_date_btn_2"===a.id||"calendar_prev_date_btn_3"===a.id?e.render("prev"):"calendar_next_date_btn"!==a.id&&"calendar_next_date_btn_2"!==a.id&&"calendar_next_date_btn_3"!==a.id||e.render("next")}catch(t){}},!1)}getMonthData(t,e,a){var n=[];t&&e||(t=(g=new Date).getFullYear(),e=g.getMonth()+1,a=g.getDay());var i=new Date(t,e-1,1),r=i.getDay();0===r&&(r=7),t=i.getFullYear(),e=i.getMonth()+1;new Date(t,e-1,0).getDate();for(var o=r-1,l=new Date(t,e,0).getDate(),h="",s=0;s<42;s++){var d=s+1-o,p=d,c=e;if(d<=0)c=e-1,p="",h="width:56px;height:56px;color:black;line-height:40px;font-size:14px;text-align:center;color:#f9f9fb;background-color:#f9f9fb";else if(d>l)c=e+1,p-=l,h="nothing";else{var g=new Date;h=p===a&&c===g.getMonth()+1&&t==g.getFullYear()?"width:56px;height:56px;color:black;line-height:40px;font-size:14px;text-align:center;background:#3a76b1;color:white":"width:56px;height:56px;color:black;line-height:40px;font-size:14px;text-align:center;color:black;background-color:white"}13===c?c=1:0===c&&(c=12),n.push({month:c,date:d,showDate:p,styleCls:h})}return{year:t,month:e,date:n,day:a}}render(t,e){var a,n,i;this.monthData?(a=this.monthData.year,n=this.monthData.month,i=this.monthData.day):(a=e.year,n=e.month,i=e.day),"prev"===t?0===--n&&(n=12,a--):"next"===t&&n++;var r=this.buildUI(a,n,i);this.warpper.innerHTML=r}buildUI(t,e,a){this.monthData=this.getMonthData(t,e,a),"es"==(window.navigator.userLanguage||window.navigator.language).substring(0,2)?(this.dayWords=["Lun","Mar","Mi&eacute;","Jue","Vie","S&aacute;b","Dom"],this.enMonthsWords=["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"]):(this.dayWords=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"],this.enMonthsWords=["January","February","March","April","May","June","July","August","September","October","November","December"]);var n="";n+="<div style='width:399px;background-color:white;font-family:Arial;border:thin solid silver;-webkit-user-select:none;-moz-user-select:none;user-select:none'>",n+="<div style='display:inline-block;width:399px;height:64px;font-size:0;position:relative'>",n+="<a style='font-size:30px;width:40px;text-align:center;color:#3a76b1;padding-left:10px;padding-right:10px;text-decoration: none;cursor:pointer;display:inline-block;height:64px;line-height:64px;position:absolute;left:0px;top:0px' id='calendar_prev_date_btn'>",n+="<svg height='24' width='24' version='1.1' style='fill:#3a76b1;cursor:pointer' id='calendar_prev_date_btn_2' viewbox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path style='fill:#3a76b1;cursor:pointer' id='calendar_prev_date_btn_3' d='M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z'></path></svg>",n+="</a>",n+="<span style='width:399px;font-size:20px;font-weight:bold;color:black;text-align:center;display:inline-block;height:64px;line-height:64px'>"+this.enMonthsWords[this.monthData.month-1]+" "+this.monthData.year+"</span>",n+="<a style='font-size:30px;width:40px;text-align:center;color:#3a76b1;padding-left:10px;padding-right:10px;text-decoration: none;cursor:pointer;display:inline-block;height:64px;line-height:64px;position:absolute;right:0px;top:0px' id='calendar_next_date_btn'>",n+="<svg height='24' width='24' version='1.1' style='fill:#3a76b1;cursor:pointer' id='calendar_next_date_btn_2' viewbox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path style='fill:#3a76b1;cursor:pointer' id='calendar_next_date_btn_3' d='M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z'></path></svg>",n+="</a>",n+="</div>",n+="<div style='width:399px'>",n+="<table style='border-spacing:0;border-collapse:collapse;background-color:#f9f9fb'><thead><tr>";for(var i=0;i<this.dayWords.length;i++)n+="<th style='height:56px;color:black;line-height:40px;text-align:center;font-size:14px;background-color:#E7E9ED;text-transform:uppercase'>"+this.dayWords[i]+"</th>";n+="</tr></thead><tbody>";var r=!1;for(i=0;i<this.monthData.date.length;i++)i%7==0&&("nothing"!=this.monthData.date[i].styleCls?(n+="<tr>",r=!0):r=!1),"nothing"==this.monthData.date[i].styleCls?1==r&&(n+="<td style='width:56px;height:56px;color:black;line-height:40px;font-size:14px;text-align:center;color:#f9f9fb;background-color:#f9f9fb'></td>"):1==r&&(n+="<td style='"+this.monthData.date[i].styleCls+"'>"+this.monthData.date[i].showDate+"</td>"),i%7==6&&1==r&&(n+="</tr>");return n+="</tbody></table></div></div>"}}
 
-			function scrum_NewTask(project,task){return{project:project,task:task}}
-			function scrum_DataToColumns(){scrum_DataToColumn1()}
-			function scrum_DataToColumn1(){var scrum_from=scrum_PendingColumn;var scrum_to="scrum_column_pending";var scrum_task_showmore = "scrum_readmore scrum_showmore1";var scrum_task_hidden = "scrum_task scrum_hidden1";var scrum_task_normal = "scrum_task";var scrum_counter=-1;function loop(){if(scrum_counter<scrum_from.length-1){scrum_counter=scrum_counter+1;try{var finalClassName=scrum_task_normal;if(scrum_counter>20){finalClassName = scrum_task_hidden;}document.getElementsByClassName(scrum_to)[0].innerHTML = document.getElementsByClassName(scrum_to)[0].innerHTML+"<div class='" + finalClassName + "'><div class='scrum_task_details'>"+scrum_from[scrum_counter].task+"</div><div class='scrum_task_project'>"+scrum_from[scrum_counter].project+"</div></div>";if(scrum_counter==20){document.getElementsByClassName(scrum_to)[0].innerHTML = document.getElementsByClassName(scrum_to)[0].innerHTML+"<div class='" + scrum_task_showmore + "' onclick='scrum_ShowMore(\"" + scrum_task_hidden + "\",\"" + scrum_task_showmore + "\")'>" + STRING_SHOWMORE +"</div>";}}catch(err){}setTimeout(loop,20);}else{scrum_DataToColumn2();}}loop();}
-			function scrum_DataToColumn2(){var scrum_from=scrum_DevelopmentColumn;var scrum_to="scrum_column_development";var scrum_task_showmore = "scrum_readmore scrum_showmore2";var scrum_task_hidden = "scrum_task scrum_hidden2";var scrum_task_normal = "scrum_task";var scrum_counter=-1;function loop(){if(scrum_counter<scrum_from.length-1){scrum_counter=scrum_counter+1;try{var finalClassName=scrum_task_normal;if(scrum_counter>20){finalClassName = scrum_task_hidden;}document.getElementsByClassName(scrum_to)[0].innerHTML = document.getElementsByClassName(scrum_to)[0].innerHTML+"<div class='" + finalClassName + "'><div class='scrum_task_details'>"+scrum_from[scrum_counter].task+"</div><div class='scrum_task_project'>"+scrum_from[scrum_counter].project+"</div></div>";if(scrum_counter==20){document.getElementsByClassName(scrum_to)[0].innerHTML = document.getElementsByClassName(scrum_to)[0].innerHTML+"<div class='" + scrum_task_showmore + "' onclick='scrum_ShowMore(\"" + scrum_task_hidden + "\",\"" + scrum_task_showmore + "\")'>" + STRING_SHOWMORE +"</div>";}}catch(err){}setTimeout(loop,20);}else{scrum_DataToColumn3();}}loop();}
-			function scrum_DataToColumn3(){var scrum_from=scrum_ReadyForTestColumn;var scrum_to="scrum_column_test";var scrum_task_showmore = "scrum_readmore scrum_showmore3";var scrum_task_hidden = "scrum_task scrum_hidden3";var scrum_task_normal = "scrum_task";var scrum_counter=-1;function loop(){if(scrum_counter<scrum_from.length-1){scrum_counter=scrum_counter+1;try{var finalClassName=scrum_task_normal;if(scrum_counter>20){finalClassName = scrum_task_hidden;}document.getElementsByClassName(scrum_to)[0].innerHTML = document.getElementsByClassName(scrum_to)[0].innerHTML+"<div class='" + finalClassName + "'><div class='scrum_task_details'>"+scrum_from[scrum_counter].task+"</div><div class='scrum_task_project'>"+scrum_from[scrum_counter].project+"</div></div>";if(scrum_counter==20){document.getElementsByClassName(scrum_to)[0].innerHTML = document.getElementsByClassName(scrum_to)[0].innerHTML+"<div class='" + scrum_task_showmore + "' onclick='scrum_ShowMore(\"" + scrum_task_hidden + "\",\"" + scrum_task_showmore + "\")'>" + STRING_SHOWMORE +"</div>";}}catch(err){}setTimeout(loop,20);}else{scrum_DataToColumn4();}}loop();}
-			function scrum_DataToColumn4(){var scrum_from=scrum_DoneColumn;var scrum_to="scrum_column_done";var scrum_task_showmore = "scrum_readmore scrum_showmore4";var scrum_task_hidden = "scrum_task scrum_hidden4";var scrum_task_normal = "scrum_task";var scrum_counter=-1;function loop(){if(scrum_counter<scrum_from.length-1){scrum_counter=scrum_counter+1;try{var finalClassName=scrum_task_normal;if(scrum_counter>20){finalClassName = scrum_task_hidden;}document.getElementsByClassName(scrum_to)[0].innerHTML = document.getElementsByClassName(scrum_to)[0].innerHTML+"<div class='" + finalClassName + "'><div class='scrum_task_details'>"+scrum_from[scrum_counter].task+"</div><div class='scrum_task_project'>"+scrum_from[scrum_counter].project+"</div></div>";if(scrum_counter==20){document.getElementsByClassName(scrum_to)[0].innerHTML = document.getElementsByClassName(scrum_to)[0].innerHTML+"<div class='" + scrum_task_showmore + "' onclick='scrum_ShowMore(\"" + scrum_task_hidden + "\",\"" + scrum_task_showmore + "\")'>" + STRING_SHOWMORE +"</div>";}}catch(err){}setTimeout(loop,20);}else{scrum_ShowBoard();}}loop();}
-			function scrum_ShowBoard(){setTimeout(function(){document.getElementsByClassName("scrum")[0].style.display = "block";document.getElementsByClassName("loading")[0].style.display = "none";},500)}
-			function scrum_AddToPending(a,b){scrum_PendingColumn.push(scrum_NewTask(a,b))}
-			function scrum_AddToDevelopment(a,b){scrum_DevelopmentColumn.push(scrum_NewTask(a,b))}
-			function scrum_AddToTesting(a,b){scrum_ReadyForTestColumn.push(scrum_NewTask(a,b))}
-			function scrum_AddToDone(a,b){scrum_DoneColumn.push(scrum_NewTask(a,b))}
-			function scrum_ShowMore(a,b){for (var i=0;i<document.getElementsByClassName(a).length;i++){document.getElementsByClassName(a)[i].style.display = "block";}document.getElementsByClassName(b)[0].style.display = "none";}
-
-			function showBoard(){scrum_DataToColumns()}
-
-			var scrum_PendingColumn = [];
-			var scrum_DevelopmentColumn = [];
-			var scrum_ReadyForTestColumn = [];
-			var scrum_DoneColumn = [];
-
-			var STRING_PENDING = "";
-			var STRING_DEVELOPMENT = "";
-			var STRING_READYFORTEST = "";
-			var STRING_DONE = "";
-			var STRING_SHOWMORE = "";
-
-			var userLanguage = window.navigator.userLanguage || window.navigator.language;
-			if (userLanguage.substring(0,2)=="es")
-				{
-				STRING_PENDING = "TAREAS PENDIENTES";
-				STRING_DEVELOPMENT = "EN DESARROLLO";
-				STRING_READYFORTEST = "LISTAS PARA PRUEBAS";
-				STRING_DONE = "TERMINADAS";
-				STRING_SHOWMORE = "Mostrar m&aacute;s";
-				}
-				else
-				{
-				STRING_PENDING = "PENDING TASKS";
-				STRING_DEVELOPMENT = "IN DEVELOPMENT";
-				STRING_READYFORTEST = "READY FOR TEST";
-				STRING_DONE = "DONE";
-				STRING_SHOWMORE = "Show more";
-				}
+			// ScrumBoard.js - https://github.com/lrusso/ScrumBoard
+			class ScrumBoard{constructor(t){this.scrum_PendingColumn=[],this.scrum_DevelopmentColumn=[],this.scrum_ReadyForTestingColumn=[],this.scrum_DoneColumn=[],this.STRING_PENDING="",this.STRING_DEVELOPMENT="",this.STRING_READYFORTESTING="",this.STRING_DONE="",this.STRING_SHOWMORE="","es"==(window.navigator.userLanguage||window.navigator.language).substring(0,2)?(this.STRING_PENDING="TAREAS PENDIENTES",this.STRING_DEVELOPMENT="EN DESARROLLO",this.STRING_READYFORTESTING="LISTAS PARA PRUEBAS",this.STRING_DONE="TERMINADAS",this.STRING_SHOWMORE="Mostrar m&aacute;s"):(this.STRING_PENDING="PENDING TASKS",this.STRING_DEVELOPMENT="IN DEVELOPMENT",this.STRING_READYFORTESTING="READY FOR TESTING",this.STRING_DONE="DONE",this.STRING_SHOWMORE="Show more");var e=document.createElement("style");e.innerText="\n\t\t\t.ScrumBoard{width:100%;overflow-x:scroll;outline:none;scrollbar-width:none}\n\t\t\t.ScrumBoard::-webkit-scrollbar{display:none}\n\t\t\t.ScrumBoard_wrapper{float:left;width:1137px}\n\t\t\t.ScrumBoard_column{display:block;float:left;background-color:#ebecf0;border-radius:3px;width:272px;margin:5px 0 10px 10px;color:#172b4d;font-weight:bold;font-size:14px;font-family:-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif}\n\t\t\t.ScrumBoard_column_title{margin:7px;padding:5px}\n\t\t\t.ScrumBoard_task{float:left;background-color:white;margin-left:8px;width:241px;border-radius:3px;box-shadow:0 1px 2px rgba(9,30,66,.25);font-weight:normal;line-height:2;padding-left:7px;padding-right:7px;margin-bottom:10px}\n\t\t\t.ScrumBoard_task_details{float:left;width:243px;line-height:1.5;margin-top:5px}\n\t\t\t.ScrumBoard_task_details a{text-decoration:none;color:#3a76b1;outline:none}\n\t\t\t.ScrumBoard_task_project{float:left;color:gray;margin-bottom:3px}\n\t\t\t.ScrumBoard_readmore{float:left;display:inline-block;width:100%;text-align:center;padding-top:5px;padding-bottom:5px;margin-bottom:10px;cursor:pointer}\n\t\t\t.ScrumBoard_hidden1{display:none}\n\t\t\t.ScrumBoard_hidden2{display:none}\n\t\t\t.ScrumBoard_hidden3{display:none}\n\t\t\t.ScrumBoard_hidden4{display:none}\n\n\t\t\t@media screen and (min-width: 1920px)\n\t\t\t\t{\n\t\t\t\t.ScrumBoard_wrapper{width:1837px}\n\t\t\t\t.ScrumBoard_column{width:382px}\n\t\t\t\t.ScrumBoard_task{width:351px}\n\t\t\t\t.ScrumBoard_task_details{width:353px}\n\t\t\t\t};\n\t\t\t",(document.head||document.getElementsByTagName("head")[0]).appendChild(e),document.getElementById(t).innerHTML='<div class="ScrumBoard"><div class="ScrumBoard_wrapper"><div class="ScrumBoard_column"><div class="ScrumBoard_column_title"></div><div class="ScrumBoard_column_pending"></div></div><div class="ScrumBoard_column"><div class="ScrumBoard_column_title"></div><div class="ScrumBoard_column_development"></div></div><div class="ScrumBoard_column"><div class="ScrumBoard_column_title"></div><div class="ScrumBoard_column_test"></div></div><div class="ScrumBoard_column"><div class="ScrumBoard_column_title"></div><div class="ScrumBoard_column_done"></div></div></div></div>'}scrum_DataToColumn1(){var t=this.scrum_PendingColumn,e="ScrumBoard_column_pending",n="ScrumBoard_readmore ScrumBoard_showmore1",s="ScrumBoard_task ScrumBoard_hidden1",a="ScrumBoard_task",o=-1,m=this;!function r(){if(o<t.length-1){o+=1;try{var d=a;o>20&&(d=s),document.getElementsByClassName(e)[0].innerHTML=document.getElementsByClassName(e)[0].innerHTML+"<div class='"+d+"'><div class='scrum_task_details'>"+t[o][1]+"</div><div class='ScrumBoard_task_project'>"+t[o][0]+"</div></div>",20==o&&(document.getElementsByClassName(e)[0].innerHTML=document.getElementsByClassName(e)[0].innerHTML+"<div class='"+n+"' onclick='for(var i=0;i<document.getElementsByClassName(\""+s+'").length;i++){document.getElementsByClassName("'+s+'")[i].style.display="block";}document.getElementsByClassName("'+n+'")[0].style.display="none";\'>'+m.STRING_SHOWMORE+"</div>")}catch(t){}setTimeout(r,20)}else m.scrum_DataToColumn2()}()}scrum_DataToColumn2(){var t=this.scrum_DevelopmentColumn,e="ScrumBoard_column_development",n="ScrumBoard_readmore ScrumBoard_showmore2",s="ScrumBoard_task ScrumBoard_hidden2",a="ScrumBoard_task",o=-1,m=this;!function r(){if(o<t.length-1){o+=1;try{var d=a;o>20&&(d=s),document.getElementsByClassName(e)[0].innerHTML=document.getElementsByClassName(e)[0].innerHTML+"<div class='"+d+"'><div class='scrum_task_details'>"+t[o][1]+"</div><div class='ScrumBoard_task_project'>"+t[o][0]+"</div></div>",20==o&&(document.getElementsByClassName(e)[0].innerHTML=document.getElementsByClassName(e)[0].innerHTML+"<div class='"+n+"' onclick='for(var i=0;i<document.getElementsByClassName(\""+s+'").length;i++){document.getElementsByClassName("'+s+'")[i].style.display="block";}document.getElementsByClassName("'+n+'")[0].style.display="none";\'>'+m.STRING_SHOWMORE+"</div>")}catch(t){}setTimeout(r,20)}else m.scrum_DataToColumn3()}()}scrum_DataToColumn3(){var t=this.scrum_ReadyForTestingColumn,e="ScrumBoard_column_test",n="ScrumBoard_readmore ScrumBoard_showmore3",s="ScrumBoard_task ScrumBoard_hidden3",a="ScrumBoard_task",o=-1,m=this;!function r(){if(o<t.length-1){o+=1;try{var d=a;o>20&&(d=s),document.getElementsByClassName(e)[0].innerHTML=document.getElementsByClassName(e)[0].innerHTML+"<div class='"+d+"'><div class='scrum_task_details'>"+t[o][1]+"</div><div class='ScrumBoard_task_project'>"+t[o][0]+"</div></div>",20==o&&(document.getElementsByClassName(e)[0].innerHTML=document.getElementsByClassName(e)[0].innerHTML+"<div class='"+n+"' onclick='for(var i=0;i<document.getElementsByClassName(\""+s+'").length;i++){document.getElementsByClassName("'+s+'")[i].style.display="block";}document.getElementsByClassName("'+n+'")[0].style.display="none";\'>'+m.STRING_SHOWMORE+"</div>")}catch(t){}setTimeout(r,20)}else m.scrum_DataToColumn4()}()}scrum_DataToColumn4(){var t=this.scrum_DoneColumn,e="ScrumBoard_column_done",n="ScrumBoard_readmore ScrumBoard_showmore4",s="ScrumBoard_task ScrumBoard_hidden4",a="ScrumBoard_task",o=-1,m=this;!function r(){if(o<t.length-1){o+=1;try{var d=a;o>20&&(d=s),document.getElementsByClassName(e)[0].innerHTML=document.getElementsByClassName(e)[0].innerHTML+"<div class='"+d+"'><div class='scrum_task_details'>"+t[o][1]+"</div><div class='ScrumBoard_task_project'>"+t[o][0]+"</div></div>",20==o&&(document.getElementsByClassName(e)[0].innerHTML=document.getElementsByClassName(e)[0].innerHTML+"<div class='"+n+"' onclick='for(var i=0;i<document.getElementsByClassName(\""+s+'").length;i++){document.getElementsByClassName("'+s+'")[i].style.display="block";}document.getElementsByClassName("'+n+'")[0].style.display="none";\'>'+m.STRING_SHOWMORE+"</div>")}catch(t){}setTimeout(r,20)}else null!=m.runWhenDone&&m.runWhenDone()}()}showBoard(t=null){this.runWhenDone=t,document.getElementsByClassName("ScrumBoard_column_title")[0].innerHTML=this.STRING_PENDING+" ("+this.scrum_PendingColumn.length+")",document.getElementsByClassName("ScrumBoard_column_title")[1].innerHTML=this.STRING_DEVELOPMENT+" ("+this.scrum_DevelopmentColumn.length+")",document.getElementsByClassName("ScrumBoard_column_title")[2].innerHTML=this.STRING_READYFORTESTING+" ("+this.scrum_ReadyForTestingColumn.length+")",document.getElementsByClassName("ScrumBoard_column_title")[3].innerHTML=this.STRING_DONE+" ("+this.scrum_DoneColumn.length+")",this.scrum_DataToColumn1()}addToPending(t,e){this.scrum_PendingColumn.push([t,e])}addToInDevelopment(t,e){this.scrum_DevelopmentColumn.push([t,e])}addToReadyForTesting(t,e){this.scrum_ReadyForTestingColumn.push([t,e])}addToDone(t,e){this.scrum_DoneColumn.push([t,e])}}
 
 			window.addEventListener("load", function()
 				{
-				loadingClock();
-				loadingTasks();
+				// CREATING THE CLOCK AND SETTING THE TRIGGERS FOR SHOWING THE CALENDAR
+				loadingClockAndCalendar();
 
-				document.getElementsByClassName("scrum_column_title")[0].innerHTML = STRING_PENDING + " (" + scrum_PendingColumn.length  + ")";
-				document.getElementsByClassName("scrum_column_title")[1].innerHTML = STRING_DEVELOPMENT + " (" + scrum_DevelopmentColumn.length  + ")";
-				document.getElementsByClassName("scrum_column_title")[2].innerHTML = STRING_READYFORTEST + " (" + scrum_ReadyForTestColumn.length  + ")";
-				document.getElementsByClassName("scrum_column_title")[3].innerHTML = STRING_DONE + " (" + scrum_DoneColumn.length  + ")";
+				// CREATING THE SCRUM BOARD
+				var myScrumBoard = new ScrumBoard("myScrumBoard_Container");
 
-				showBoard();
+				// LOADING THE TASKS INTO THE SCRUM BOARD
+				loadingTasks(myScrumBoard);
+
+				// SETTING WHAT WILL HAPPEN WHEN THE SCRUM BOARD HAS ALREADY RENDERED ALL THE TASKS
+				myScrumBoard.showBoard(function()
+					{
+					setTimeout(function()
+						{
+						// SHOWING THE SCRUM BOARD
+						document.getElementById("myScrumBoard_Container").style.display = "block";
+
+						// HIDING THE LOADING SPLASH
+						document.getElementsByClassName("loading")[0].style.display = "none";
+						},500);
+					});
 				});
 
-			function loadingClock()
+			function loadingClockAndCalendar()
 				{
 				// SETTING THE INTERVAL TO UPDATE THE CLOCK
 				setInterval(function()
@@ -270,99 +195,99 @@
 					});
 				}
 
-			function loadingTasks()
+			function loadingTasks(a)
 				{
-				scrum_AddToPending("ARDUCLEANER","Regular motores con batería.");
-				scrum_AddToPending("ARDUCLEANER","Nuevo vídeo de demostración.");
-				scrum_AddToPending("TALKINGHEAD","Movimiento de ojos.");
-				scrum_AddToPending("TALKINGHEAD","Movimiento de boca.");
-				scrum_AddToPending("TALKINGHEAD","Función de texto a voz.");
-				scrum_AddToPending("NINTENDO","ScrollWrite sin márgenes.");
-				scrum_AddToPending("RPG GAME", "Implementar enemigo.");
-				scrum_AddToPending("RPG GAME", "Implementar música y sonidos.");
-				scrum_AddToPending("RPG GAME", "Implementar cargar y guardar.");
-				scrum_AddToPending("VIRTUAL PET","Alimentar mascota.");
-				scrum_AddToPending("VIRTUAL PET","Lanzamiento de frisbee.");
-				scrum_AddToPending("VIRTUAL PET","Mejorar sprite de mascota.");
-				scrum_AddToPending("ARDUINO SIMULATOR", "Agregar más componentes.");
-				scrum_AddToPending("FOLLOW MY VOICE","Publicar sin registro de llamadas.");
-				scrum_AddToPending("MOBILITY LAUNCHER","Publicar sin registro de llamadas.");
-				scrum_AddToPending("BLIND COMMUNICATOR","Publicar sin registro de llamadas.");
+				a.addToPending("ARDUCLEANER","Regular motores con batería.");
+				a.addToPending("ARDUCLEANER","Nuevo vídeo de demostración.");
+				a.addToPending("TALKINGHEAD","Movimiento de ojos.");
+				a.addToPending("TALKINGHEAD","Movimiento de boca.");
+				a.addToPending("TALKINGHEAD","Función de texto a voz.");
+				a.addToPending("NINTENDO","ScrollWrite sin márgenes.");
+				a.addToPending("RPG GAME", "Implementar enemigo.");
+				a.addToPending("RPG GAME", "Implementar música y sonidos.");
+				a.addToPending("RPG GAME", "Implementar cargar y guardar.");
+				a.addToPending("VIRTUAL PET","Alimentar mascota.");
+				a.addToPending("VIRTUAL PET","Lanzamiento de frisbee.");
+				a.addToPending("VIRTUAL PET","Mejorar sprite de mascota.");
+				a.addToPending("ARDUINO SIMULATOR", "Agregar más componentes.");
+				a.addToPending("FOLLOW MY VOICE","Publicar sin registro de llamadas.");
+				a.addToPending("MOBILITY LAUNCHER","Publicar sin registro de llamadas.");
+				a.addToPending("BLIND COMMUNICATOR","Publicar sin registro de llamadas.");
 
-				scrum_AddToDevelopment("RPG GAME", "Implementar Wasteland.");
+				a.addToInDevelopment("RPG GAME", "Implementar Wasteland.");
 
-				//scrum_AddToTesting("POOL","Lógica de predicción de tiro.");
+				//a.addToReadyForTesting("POOL","Lógica de predicción de tiro.");
 
-				scrum_AddToDone("POOL","Lógica de predicción de tiro.");
-				scrum_AddToDone("EMULATRIX","Optimizar la emulación de Windows.");
-				scrum_AddToDone("EMULATRIX","Implementar PKZip.");
-				scrum_AddToDone("TINYEPUB","Que vaya a la ruta CFI guardada.");
-				scrum_AddToDone("TINYEPUB","Implementar Custom Alert.");
-				scrum_AddToDone("NINTENDO","Implementar Custom Alert.");
-				scrum_AddToDone("TINYACE","Implementar Custom Confirm.");
-				scrum_AddToDone("SPIDER","Mac - Ventana recuerda la posición.");
-				scrum_AddToDone("SPIDER","Mac - Ventana recuerda el tamaño.");
-				scrum_AddToDone("WEBTOAPP","Subir demo a Github.");
-				scrum_AddToDone("CHESS","Web - Mostrar mensaje al guardar.");
-				scrum_AddToDone("CHESS","App - Remover el Toast al guardar.");
-				scrum_AddToDone("NINTENDO","Clear timeout de gui_saved.");
-				scrum_AddToDone("NINTENDO","Remover condicionales de iOS.");
-				scrum_AddToDone("EMULATRIX","DOS - Clear timeout de gui_saved.");
-				scrum_AddToDone("WEBTOAPP","Android - Agregar permiso Internet.");
-				scrum_AddToDone("WEBTOAPP","Mac - Agregar permiso Internet.");
-				scrum_AddToDone("EMULATRIX","App - Remover imports sin usar.");
-				scrum_AddToDone("WEBTOAPP","Android - Implementar upload.");
-				scrum_AddToDone("WEBTOAPP","Android - Implementar download.");
-				scrum_AddToDone("WEBTOAPP","Mac - Implementar upload.");
-				scrum_AddToDone("WEBTOAPP","Mac - Implementar download.");
-				scrum_AddToDone("WEBTOAPP","Mac - Implementar sufijos.");
-				scrum_AddToDone("WEBTOAPP","iOS - Implementar upload.");
-				scrum_AddToDone("WEBTOAPP","iOS - Implementar target mínimo.");
-				scrum_AddToDone("WEBTOAPP","iOS - Implementar status bar.");
-				scrum_AddToDone("WEBTOAPP","iOS - Implementar download.");
-				scrum_AddToDone("BANNER GENERATOR","Optimizar resize en smartphones.");
-				scrum_AddToDone("ARDUINO SIMULATOR","Implementar Serial.available y read.");
-				scrum_AddToDone("ARDUINO SIMULATOR","Bugfix: Serial.read() con áéíóúñ.");
-				scrum_AddToDone("ARDUINO SIMULATOR","Limpiar el GIF de la rueda.");
-				scrum_AddToDone("WEBTOAPP","Mac - Habilitar descarga binaria.");
-				scrum_AddToDone("WEBTOAPP","iOS - Habilitar descarga binaria.");
-				scrum_AddToDone("WEBTOAPP","iOS - Implementar fullscreen.");
-				scrum_AddToDone("ARDUINO SIMULATOR","Arreglar layout para iPods.");
-				scrum_AddToDone("PHASER SPRITESHEET FIXER", "Hacer versión Web.");
-				scrum_AddToDone("SQLITE ONLINE","Que el loading incluya el WASM.");
-				scrum_AddToDone("ARDUINO SIMULATOR", "Bug en PWA - No actualiza imgs.");
-				scrum_AddToDone("ENDLESS RUNNER","Movimiento suave left/right.");
-				scrum_AddToDone("ENDLESS RUNNER","Pause/resume en blur/focus.");
-				scrum_AddToDone("ENDLESS RUNNER","Implementar anillos.");
-				scrum_AddToDone("ENDLESS RUNNER","Implementar héroe.");
-				scrum_AddToDone("ENDLESS RUNNER","Implementar música.");
-				scrum_AddToDone("ENDLESS RUNNER","Implementar obstáculos.");
-				scrum_AddToDone("ENDLESS RUNNER","Implementar océano.");
-				scrum_AddToDone("ENDLESS RUNNER","Implementar audio en iOS.");
-				scrum_AddToDone("CLASSROOM","Barra de reproducción inferior.");
-				scrum_AddToDone("CLASSROOM","Nuevos vídeos de Demo + HowTo.");
-				scrum_AddToDone("SQLITE ONLINE","Reemplazar confirms y alerts.");
-				scrum_AddToDone("CLASSROOM PHASER","Datos del curso por una URL JSON.");
-				scrum_AddToDone("CLASSROOM","Audio en Safari.");
-				scrum_AddToDone("CLASSROOM","Fix de toggle controls en iOS.");
-				scrum_AddToDone("CLASSROOM","WebApp con rotación de pantalla.");
-				scrum_AddToDone("CLASSROOM","Sombras en los íconos del player.");
-				scrum_AddToDone("MINIPIANO","Audio en Safari.");
-				scrum_AddToDone("VIRTUAL PET","Audio en Safari.");
-				scrum_AddToDone("VIRTUAL PET","Botón de sonido.");
-				scrum_AddToDone("VIRTUAL PET","Música de fondo.");
-				scrum_AddToDone("ENDLESS RUNNER","Implementar fondo.");
-				scrum_AddToDone("ARDUINO SIMULATOR", "Implementar clase String.");
-				scrum_AddToDone("ARDUINO SIMULATOR", "Implementar _fractionToChar.");
-				scrum_AddToDone("ASSISTBOT", "Bot Tech Support acepta el ticket -1.");
-				scrum_AddToDone("ASSISTBOT", "Bot 3D que habla en inglés.");
-				scrum_AddToDone("ASSISTBOT", "Bot 3D compatible con celulares.");
-				scrum_AddToDone("ASSISTBOT", "Bot 3D compatible con iOS.");
-				scrum_AddToDone("ASSISTBOT", "Bot 3D con una voz femenina fija.");
-				scrum_AddToDone("RPG GAME", "Implementar controles táctiles.");
-				scrum_AddToDone("RPG GAME", "Barra de salud y monedas.");
-				scrum_AddToDone("BANNER GENERATOR", "App vertical, backcolor y texto.");
-				scrum_AddToDone("BANNER GENERATOR", "App horizontal, backcolor y texto.");
+				a.addToDone("POOL","Lógica de predicción de tiro.");
+				a.addToDone("EMULATRIX","Optimizar la emulación de Windows.");
+				a.addToDone("EMULATRIX","Implementar PKZip.");
+				a.addToDone("TINYEPUB","Que vaya a la ruta CFI guardada.");
+				a.addToDone("TINYEPUB","Implementar Custom Alert.");
+				a.addToDone("NINTENDO","Implementar Custom Alert.");
+				a.addToDone("TINYACE","Implementar Custom Confirm.");
+				a.addToDone("SPIDER","Mac - Ventana recuerda la posición.");
+				a.addToDone("SPIDER","Mac - Ventana recuerda el tamaño.");
+				a.addToDone("WEBTOAPP","Subir demo a Github.");
+				a.addToDone("CHESS","Web - Mostrar mensaje al guardar.");
+				a.addToDone("CHESS","App - Remover el Toast al guardar.");
+				a.addToDone("NINTENDO","Clear timeout de gui_saved.");
+				a.addToDone("NINTENDO","Remover condicionales de iOS.");
+				a.addToDone("EMULATRIX","DOS - Clear timeout de gui_saved.");
+				a.addToDone("WEBTOAPP","Android - Agregar permiso Internet.");
+				a.addToDone("WEBTOAPP","Mac - Agregar permiso Internet.");
+				a.addToDone("EMULATRIX","App - Remover imports sin usar.");
+				a.addToDone("WEBTOAPP","Android - Implementar upload.");
+				a.addToDone("WEBTOAPP","Android - Implementar download.");
+				a.addToDone("WEBTOAPP","Mac - Implementar upload.");
+				a.addToDone("WEBTOAPP","Mac - Implementar download.");
+				a.addToDone("WEBTOAPP","Mac - Implementar sufijos.");
+				a.addToDone("WEBTOAPP","iOS - Implementar upload.");
+				a.addToDone("WEBTOAPP","iOS - Implementar target mínimo.");
+				a.addToDone("WEBTOAPP","iOS - Implementar status bar.");
+				a.addToDone("WEBTOAPP","iOS - Implementar download.");
+				a.addToDone("BANNER GENERATOR","Optimizar resize en smartphones.");
+				a.addToDone("ARDUINO SIMULATOR","Implementar Serial.available y read.");
+				a.addToDone("ARDUINO SIMULATOR","Bugfix: Serial.read() con áéíóúñ.");
+				a.addToDone("ARDUINO SIMULATOR","Limpiar el GIF de la rueda.");
+				a.addToDone("WEBTOAPP","Mac - Habilitar descarga binaria.");
+				a.addToDone("WEBTOAPP","iOS - Habilitar descarga binaria.");
+				a.addToDone("WEBTOAPP","iOS - Implementar fullscreen.");
+				a.addToDone("ARDUINO SIMULATOR","Arreglar layout para iPods.");
+				a.addToDone("PHASER SPRITESHEET FIXER", "Hacer versión Web.");
+				a.addToDone("SQLITE ONLINE","Que el loading incluya el WASM.");
+				a.addToDone("ARDUINO SIMULATOR", "Bug en PWA - No actualiza imgs.");
+				a.addToDone("ENDLESS RUNNER","Movimiento suave left/right.");
+				a.addToDone("ENDLESS RUNNER","Pause/resume en blur/focus.");
+				a.addToDone("ENDLESS RUNNER","Implementar anillos.");
+				a.addToDone("ENDLESS RUNNER","Implementar héroe.");
+				a.addToDone("ENDLESS RUNNER","Implementar música.");
+				a.addToDone("ENDLESS RUNNER","Implementar obstáculos.");
+				a.addToDone("ENDLESS RUNNER","Implementar océano.");
+				a.addToDone("ENDLESS RUNNER","Implementar audio en iOS.");
+				a.addToDone("CLASSROOM","Barra de reproducción inferior.");
+				a.addToDone("CLASSROOM","Nuevos vídeos de Demo + HowTo.");
+				a.addToDone("SQLITE ONLINE","Reemplazar confirms y alerts.");
+				a.addToDone("CLASSROOM PHASER","Datos del curso por una URL JSON.");
+				a.addToDone("CLASSROOM","Audio en Safari.");
+				a.addToDone("CLASSROOM","Fix de toggle controls en iOS.");
+				a.addToDone("CLASSROOM","WebApp con rotación de pantalla.");
+				a.addToDone("CLASSROOM","Sombras en los íconos del player.");
+				a.addToDone("MINIPIANO","Audio en Safari.");
+				a.addToDone("VIRTUAL PET","Audio en Safari.");
+				a.addToDone("VIRTUAL PET","Botón de sonido.");
+				a.addToDone("VIRTUAL PET","Música de fondo.");
+				a.addToDone("ENDLESS RUNNER","Implementar fondo.");
+				a.addToDone("ARDUINO SIMULATOR", "Implementar clase String.");
+				a.addToDone("ARDUINO SIMULATOR", "Implementar _fractionToChar.");
+				a.addToDone("ASSISTBOT", "Bot Tech Support acepta el ticket -1.");
+				a.addToDone("ASSISTBOT", "Bot 3D que habla en inglés.");
+				a.addToDone("ASSISTBOT", "Bot 3D compatible con celulares.");
+				a.addToDone("ASSISTBOT", "Bot 3D compatible con iOS.");
+				a.addToDone("ASSISTBOT", "Bot 3D con una voz femenina fija.");
+				a.addToDone("RPG GAME", "Implementar controles táctiles.");
+				a.addToDone("RPG GAME", "Barra de salud y monedas.");
+				a.addToDone("BANNER GENERATOR", "App vertical, backcolor y texto.");
+				a.addToDone("BANNER GENERATOR", "App horizontal, backcolor y texto.");
 				}
 		</script>
 	</body>
