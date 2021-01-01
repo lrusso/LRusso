@@ -145,15 +145,7 @@
 			function scrum_AddToDevelopment(a,b){scrum_DevelopmentColumn.push(scrum_NewTask(a,b))}
 			function scrum_AddToTesting(a,b){scrum_ReadyForTestColumn.push(scrum_NewTask(a,b))}
 			function scrum_AddToDone(a,b){scrum_DoneColumn.push(scrum_NewTask(a,b))}
-			function scrum_ShowMore(a,b)
-				{
-				for (var i=0;i<document.getElementsByClassName(a).length;i++)
-					{
-					document.getElementsByClassName(a)[i].style.display = "block";
-					}
-
-				document.getElementsByClassName(b)[0].style.display = "none";
-				}
+			function scrum_ShowMore(a,b){for (var i=0;i<document.getElementsByClassName(a).length;i++){document.getElementsByClassName(a)[i].style.display = "block";}document.getElementsByClassName(b)[0].style.display = "none";}
 
 			function showBoard(){scrum_DataToColumns()}
 
